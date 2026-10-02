@@ -1,5 +1,4 @@
 import Hero from "@/components/home/Hero";
-import SpecMarquee from "@/components/home/SpecMarquee";
 import Manifesto from "@/components/home/Manifesto";
 import Hardware from "@/components/home/Hardware";
 import TimingSection from "@/components/home/TimingSection";
@@ -15,7 +14,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <SpecMarquee />
       <Manifesto />
       <Hardware />
       <TimingSection />

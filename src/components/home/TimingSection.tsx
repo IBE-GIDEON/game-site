@@ -1,32 +1,23 @@
-import { Eyebrow, MaskHeading, Reveal } from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
+import { Reveal } from "@/components/ui/Reveal";
 import LiveTiming from "@/components/live/LiveTiming";
 
 export default function TimingSection() {
   return (
-    <section className="relative overflow-hidden py-20 sm:py-36">
-      <div className="container-x relative">
-        <div className="mb-10 sm:mb-14 grid gap-8 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-7">
-            <Eyebrow className="mb-6">Live timing</Eyebrow>
-            <MaskHeading
-              lines={["Every lap timed.", <span key="2" className="text-white/50">Every driver ranked.</span>]}
-              className="text-[clamp(1.98rem,4.54vw,3.86rem)] text-white"
-            />
+    <section className="container-x py-20 sm:py-32">
+      <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+        <Reveal className="lg:col-span-4">
+          <h2 className="font-display text-[clamp(1.9rem,3.6vw,3rem)] text-white">Live timing</h2>
+          <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-smoke">
+            Every lap at the venue is timed and ranked. This is today&apos;s session at Barcelona.
+          </p>
+          <div className="mt-6">
+            <Button href="/timing" variant="outline">
+              Full timing
+            </Button>
           </div>
-          <Reveal className="lg:col-span-5">
-            <p className="hidden max-w-md text-[16px] leading-relaxed text-smoke sm:block lg:ml-auto">
-              Your data is captured automatically from the moment you leave the pit lane. Sector times, lap
-              history and the venue leaderboard, live on the screens and on your phone.
-            </p>
-            <div className="sm:mt-6 lg:flex lg:justify-end">
-              <Button href="/timing" variant="outline">
-                Open full timing screen
-              </Button>
-            </div>
-          </Reveal>
-        </div>
-        <Reveal y={40}>
+        </Reveal>
+        <Reveal className="lg:col-span-8">
           <LiveTiming compact />
         </Reveal>
       </div>

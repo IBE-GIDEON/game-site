@@ -41,7 +41,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-GB" className={saira.variable}>
-      <body className="grain min-h-dvh">
+      <body className="min-h-dvh">
         <Loader />
         <SmoothScroll>
           <a

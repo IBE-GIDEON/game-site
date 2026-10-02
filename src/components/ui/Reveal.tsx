@@ -9,7 +9,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 export function Reveal({
   children,
   delay = 0,
-  y = 28,
+  y = 12,
   className,
   as = "div",
 }: {
@@ -59,9 +59,9 @@ export function MaskHeading({
         <span key={i} className="block overflow-hidden pb-[0.08em]">
           <motion.span
             className="block"
-            initial={reduce ? { opacity: 0 } : { y: "105%" }}
-            animate={show ? (reduce ? { opacity: 1 } : { y: "0%" }) : undefined}
-            transition={{ duration: 1.1, delay: delay + i * 0.09, ease }}
+            initial={{ opacity: 0 }}
+            animate={show ? { opacity: 1 } : undefined}
+            transition={{ duration: reduce ? 0.01 : 0.9, delay: delay + i * 0.06, ease }}
           >
             {line}
           </motion.span>
