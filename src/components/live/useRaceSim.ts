@@ -191,12 +191,12 @@ export function useRaceSim(onFrame?: (rows: RowState[]) => void, running = true)
               s.overallBest = lapTime;
               push({ kind: "fastest", text: `Fastest lap: ${row.def.name}, ${fmtLap(lapTime)}` });
             } else if (isPb) {
-              push({ kind: "pb", text: `Personal best: ${row.def.name}, ${fmtLap(lapTime)}` });
+              push({ kind: "pb", text: `Personal best for ${row.def.name}: ${fmtLap(lapTime)}` });
             }
             s.targets[i] = newTargets(row.def, rand);
             k = 0;
           } else if (states[k - 1] === "purple") {
-            push({ kind: "purple", text: `Fastest sector ${k}: ${row.def.name}` });
+            push({ kind: "purple", text: `Purple sector ${k} for ${row.def.name}` });
           }
           s.sectorIdx[i] = k;
           s.rows[i] = next;

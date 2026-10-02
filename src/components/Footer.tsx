@@ -83,6 +83,13 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* oversized wordmark, clipped by the bottom edge */}
+      <div className="pointer-events-none select-none overflow-hidden" aria-hidden>
+        <div className="font-display -mb-[0.2em] whitespace-nowrap text-center text-[13.5vw] leading-none text-white/[0.035]">
+          RACECRAFT
+        </div>
+      </div>
+
       <div className="border-t border-white/[0.07]">
         <div className="container-x flex flex-col justify-between gap-2 py-6 text-[12px] text-ash sm:flex-row">
           <span>

@@ -1,71 +1,88 @@
-import { Reveal } from "@/components/ui/Reveal";
+import { Clock, LetterCircleP, MapPin, Phone } from "@phosphor-icons/react/dist/ssr";
+import { Eyebrow, MaskHeading, Reveal } from "@/components/ui/Reveal";
+import Button from "@/components/ui/Button";
 import OpenStatus from "@/components/OpenStatus";
 import { hours, site } from "@/lib/site";
 
 const fmt = (h: number) => `${h > 12 ? h - 12 : h}${h >= 12 ? "pm" : "am"}`;
-const order = [3, 4, 5, 6, 0, 1, 2];
 
 export default function Visit() {
-  const directions = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapsQuery)}`;
   return (
-    <section className="container-x py-20 sm:py-32">
-      <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-        <Reveal className="lg:col-span-5">
-          <h2 className="font-display text-[clamp(1.9rem,3.6vw,3rem)] text-white">Find us</h2>
-          <OpenStatus className="mt-4" />
+    <section className="container-x py-20 sm:py-36">
+      <div className="grid gap-12 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <Eyebrow className="mb-6">Visit us</Eyebrow>
+          <MaskHeading lines={["In the heart of", "Peterborough."]} className="text-[clamp(1.98rem,4.2vw,3.53rem)] text-white" />
+          <Reveal>
+            <OpenStatus className="mt-8" />
+          </Reveal>
 
-          <div className="mt-8 grid grid-cols-2 gap-8 text-[15px] leading-relaxed">
-            <div>
-              <div className="text-[13px] text-ash">Address</div>
-              <address className="mt-2 not-italic text-bone">
-                {site.address.map((l) => (
-                  <span key={l} className="block">
-                    {l}
-                  </span>
-                ))}
-              </address>
-              <a href={directions} target="_blank" rel="noreferrer" className="mt-2 inline-block text-[14px] text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">
-                Directions
-              </a>
-            </div>
-            <div>
-              <div className="text-[13px] text-ash">Contact</div>
-              <a href={site.phoneHref} className="mt-2 block text-bone hover:text-white">
-                {site.phone}
-              </a>
-              <a href={`mailto:${site.email}`} className="block break-all text-bone hover:text-white">
-                {site.email}
-              </a>
-            </div>
-          </div>
-
-          <div className="mt-8">
-            <div className="text-[13px] text-ash">Opening hours</div>
-            <dl className="mt-2 grid max-w-xs grid-cols-[1fr_auto] gap-y-1 text-[14px]">
-              {order.map((d) => (
-                <div key={d} className="contents">
-                  <dt className="text-smoke">{hours[d].day}</dt>
-                  <dd className="text-right text-bone">
-                    {hours[d].open === null ? "Closed" : `${fmt(hours[d].open!)} – ${fmt(hours[d].close!)}`}
-                  </dd>
+          <div className="mt-10 space-y-px overflow-hidden border border-white/[0.07] bg-white/[0.07]">
+            {[
+              { Icon: MapPin, title: "Address", body: site.address.join(", ") },
+              { Icon: LetterCircleP, title: "Parking", body: "Monk Stone House Car Park, PE1 1SA. Pay with RingGo." },
+              { Icon: Phone, title: "Call or WhatsApp", body: site.phone },
+            ].map(({ Icon, title, body }, i) => (
+              <Reveal key={title} delay={i * 0.06} className="flex gap-4 bg-ink p-5">
+                <Icon size={20} className="mt-0.5 shrink-0 text-signal" />
+                <div>
+                  <div className="text-[13px] text-ash">{title}</div>
+                  <div className="mt-1 text-[15px] text-bone">{body}</div>
                 </div>
-              ))}
-            </dl>
+              </Reveal>
+            ))}
+            <Reveal className="flex gap-4 bg-ink p-5">
+              <Clock size={20} className="mt-0.5 shrink-0 text-signal" />
+              <div className="flex-1">
+                <div className="text-[13px] text-ash">Opening hours</div>
+                <ul className="mt-2 grid grid-cols-2 gap-x-6 gap-y-1 text-[14px]">
+                  {[3, 4, 5, 6, 0, 1].map((d) => (
+                    <li key={d} className="flex justify-between text-smoke">
+                      <span>{hours[d].day.slice(0, 3)}</span>
+                      <span className="tabular font-mono text-[12px] text-bone/80">
+                        {hours[d].open === null ? "Closed" : `${fmt(hours[d].open!)}–${fmt(hours[d].close!)}`}
+                      </span>
+                    </li>
+                  ))}
+                  <li className="flex justify-between text-smoke">
+                    <span>Tue</span>
+                    <span className="font-mono text-[12px] text-bone/80">Closed</span>
+                  </li>
+                </ul>
+              </div>
+            </Reveal>
           </div>
-          <p className="mt-6 max-w-sm text-[13px] leading-relaxed text-ash">
-            Parking: Monk Stone House Car Park, PE1 1SA, paid with RingGo.
-          </p>
-        </Reveal>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapsQuery)}`} variant="outline">
+              Get directions
+            </Button>
+            <Button href={site.whatsapp} variant="ghost">
+              Message on WhatsApp
+            </Button>
+          </div>
+        </div>
 
-        <Reveal className="lg:col-span-7">
-          <div className="relative aspect-[4/3] w-full overflow-hidden lg:aspect-auto lg:h-full lg:min-h-[480px]">
+        <Reveal className="lg:col-span-7" y={40}>
+          <div className="relative h-full min-h-[260px] overflow-hidden sm:min-h-[420px] border border-white/[0.07]">
             <iframe
               title="Map showing Racecraft Sim in Peterborough"
               src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapsQuery)}&z=16&output=embed`}
-              className="absolute inset-0 h-full w-full [filter:invert(0.92)_hue-rotate(180deg)_saturate(0)_brightness(0.85)]"
+              className="absolute inset-0 h-full w-full [filter:invert(0.92)_hue-rotate(180deg)_saturate(0.35)_brightness(0.9)_contrast(1.05)]"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
+            <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/5" />
+            <div className="glass absolute bottom-5 left-5 right-5 flex items-center justify-between gap-4 rounded-[2px] p-4 sm:right-auto">
+              <div className="flex items-center gap-3">
+                <span className="grid size-10 place-items-center rounded-[2px] bg-signal">
+                  <MapPin size={18} weight="fill" />
+                </span>
+                <div>
+                  <div className="text-[14px] text-white">Racecraft Sim</div>
+                  <div className="text-[12px] text-smoke">{site.address.join(", ")}</div>
+                </div>
+              </div>
+            </div>
           </div>
         </Reveal>
       </div>

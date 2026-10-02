@@ -16,6 +16,7 @@ const TrackMap = forwardRef<TrackMapHandle, { rows: RowState[] }>(function Track
   const lut = useRef<{ x: number; y: number }[]>([]);
   const cars = useRef<Record<string, SVGGElement | null>>({});
   const labels = useRef<Record<string, SVGTextElement | null>>({});
+  const sectorMarks = useRef<{ x: number; y: number }[]>([]);
 
   useLayoutEffect(() => {
     const p = pathRef.current;
@@ -25,6 +26,7 @@ const TrackMap = forwardRef<TrackMapHandle, { rows: RowState[] }>(function Track
       const pt = p.getPointAtLength((i / SAMPLES) * len);
       return { x: pt.x, y: pt.y };
     });
+    sectorMarks.current = [1 / 3, 2 / 3].map((f) => lut.current[Math.floor(f * SAMPLES)]);
   }, []);
 
   useImperativeHandle(ref, () => ({
@@ -42,20 +44,46 @@ const TrackMap = forwardRef<TrackMapHandle, { rows: RowState[] }>(function Track
         const y = table[i0].y + (table[i1].y - table[i0].y) * t;
         g.setAttribute("transform", `translate(${x.toFixed(2)} ${y.toFixed(2)})`);
         g.style.opacity = "1";
-        // only the top three carry a position label, to keep the drawing quiet
         const label = labels.current[r.def.id];
-        const pos = order.indexOf(r.def.id) + 1;
-        if (label) label.textContent = pos <= 3 ? `P${pos}` : "";
+        if (label) label.textContent = String(order.indexOf(r.def.id) + 1);
       });
     },
   }));
 
   return (
     <svg viewBox="20 30 500 260" className="h-full w-full" role="img" aria-label="Live track map, Circuit de Barcelona-Catalunya">
-      {/* single thin outline: the circuit as a drawing, not a graphic */}
-      <path ref={pathRef} d={TRACK_PATH} fill="none" stroke="#ffffff" strokeOpacity="0.22" strokeWidth="1.5" strokeLinejoin="round" />
+      <defs>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" result="b" />
+          <feMerge>
+            <feMergeNode in="b" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <linearGradient id="trackGrad" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stopColor="#3a3a42" />
+          <stop offset="1" stopColor="#24242a" />
+        </linearGradient>
+      </defs>
+
+      {/* track: outer kerb, asphalt, racing line */}
+      <path d={TRACK_PATH} fill="none" stroke="#000" strokeOpacity="0.6" strokeWidth="16" strokeLinejoin="round" />
+      <path ref={pathRef} d={TRACK_PATH} fill="none" stroke="url(#trackGrad)" strokeWidth="11" strokeLinejoin="round" />
+      <path d={TRACK_PATH} fill="none" stroke="#ffffff" strokeOpacity="0.08" strokeWidth="1" strokeDasharray="2 6" />
+
       {/* start / finish */}
-      <line x1="120" y1="262" x2="120" y2="278" stroke="#f2f1ee" strokeOpacity="0.7" strokeWidth="1.5" />
+      <g transform="translate(120 270)">
+        <rect x="-1.5" y="-9" width="3" height="18" fill="#f2f1ee" />
+        <text x="0" y="24" textAnchor="middle" className="fill-smoke font-mono" fontSize="8">
+          S/F
+        </text>
+      </g>
+      {/* sector boundaries (approximate positions; recomputed client-side) */}
+      <g className="font-mono" fontSize="8">
+        <text x="478" y="150" className="fill-ash">S2</text>
+        <text x="232" y="104" className="fill-ash">S3</text>
+        <text x="300" y="262" className="fill-ash">S1</text>
+      </g>
 
       {rows.map((r) => (
         <g
@@ -65,16 +93,18 @@ const TrackMap = forwardRef<TrackMapHandle, { rows: RowState[] }>(function Track
           }}
           style={{ opacity: 0, transition: "opacity .6s" }}
         >
-          <circle r="3.6" fill="#f2f1ee" />
+          <circle r="9" fill={r.def.color} opacity="0.18" />
+          <circle r="6.5" fill={r.def.color} stroke="#08080a" strokeWidth="1.5" filter={r.def.id === "ryan" ? "url(#glow)" : undefined} />
           <text
             ref={(el) => {
               labels.current[r.def.id] = el;
             }}
-            y="-8"
             textAnchor="middle"
-            fontSize="8"
+            dy="2.6"
+            fontSize="7"
+            fontWeight="700"
             className="font-mono"
-            fill="#a3a3ab"
+            fill="#08080a"
           />
         </g>
       ))}

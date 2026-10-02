@@ -22,8 +22,8 @@ const base =
 
 const variants: Record<Variant, string> = {
   signal: "bg-signal text-white hover:bg-signal-bright",
-  // secondary: solid neutral, no border
-  outline: "bg-white/[0.09] text-white hover:bg-white/[0.16]",
+  // outlined: hairline border that fills white on hover
+  outline: "border border-white/25 text-bone hover:border-white hover:bg-white hover:text-ink",
   ghost: "text-bone underline-offset-[6px] hover:text-white hover:underline",
 };
 

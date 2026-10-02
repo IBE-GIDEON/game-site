@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useRef } from "react";
+import { ArrowDown, Timer, Trophy } from "@phosphor-icons/react";
 import { MaskHeading } from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import { useReady } from "@/lib/ready";
@@ -123,18 +124,51 @@ export default function Hero() {
           </div>
 
           <motion.aside
-            initial={{ opacity: 0 }}
-            animate={ready ? { opacity: 1 } : undefined}
-            transition={{ duration: 1, delay: 0.7 }}
-            className="hidden text-right lg:col-span-4 lg:block"
+            initial={{ opacity: 0, y: 24 }}
+            animate={ready ? { opacity: 1, y: 0 } : undefined}
+            transition={{ duration: 1.1, delay: 0.7, ease }}
+            className="glass hidden p-5 lg:col-span-4 lg:block"
           >
-            <div className="text-[13px] text-smoke">{monthly.track} track record</div>
-            <div className="mt-1 font-mono text-[2.4rem] leading-none text-white">{monthly.record.time}</div>
-            <div className="mt-2 text-[13px] text-smoke">{monthly.record.driver}, {monthly.record.date}</div>
-            <div className="mt-8 text-[13px] text-smoke">Track of the month</div>
-            <div className="mt-1 text-[15px] text-white">Barcelona-Catalunya</div>
+            <div className="flex items-center justify-between text-[12px] text-ash">
+              <span>Monthly leaderboard</span>
+              <span>{monthly.track} · {monthly.month}</span>
+            </div>
+            <div className="mt-4 flex items-end justify-between">
+              <div>
+                <div className="tabular font-mono text-[34px] leading-none text-white">{monthly.record.time}</div>
+                <div className="mt-2 flex items-center gap-1.5 text-[13px] text-smoke">
+                  <Trophy size={14} weight="fill" className="text-amber" />
+                  Track record by {monthly.record.driver}
+                </div>
+              </div>
+              <span className="rounded-[2px] bg-purple/15 px-2.5 py-1 font-mono text-[11px] text-purple ring-1 ring-purple/30">
+                P1
+              </span>
+            </div>
+            <div className="mt-5 h-px bg-white/10" />
+            <div className="mt-4 flex items-center justify-between text-[13px]">
+              <span className="flex items-center gap-1.5 text-smoke">
+                <Timer size={14} />
+                Track of the month
+              </span>
+              <span className="text-bone">Barcelona-Catalunya</span>
+            </div>
           </motion.aside>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={ready ? { opacity: 1 } : undefined}
+          transition={{ delay: 1.1, duration: 1 }}
+          className="mt-12 hidden items-center gap-3 text-[12px] text-ash sm:flex"
+        >
+          <span className="grid size-8 place-items-center border border-white/15">
+            <motion.span animate={{ y: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}>
+              <ArrowDown size={13} />
+            </motion.span>
+          </span>
+          Scroll to explore the venue
+        </motion.div>
       </motion.div>
     </section>
   );
