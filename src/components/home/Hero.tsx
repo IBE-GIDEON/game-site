@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useRef } from "react";
-import { ArrowDown, Timer, Trophy } from "@phosphor-icons/react";
+import { Timer, Trophy } from "@phosphor-icons/react";
 import { MaskHeading } from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import { useReady } from "@/lib/ready";
@@ -155,20 +155,6 @@ export default function Hero() {
             </div>
           </motion.aside>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={ready ? { opacity: 1 } : undefined}
-          transition={{ delay: 1.1, duration: 1 }}
-          className="mt-12 hidden items-center gap-3 text-[12px] text-ash sm:flex"
-        >
-          <span className="grid size-8 place-items-center border border-white/15">
-            <motion.span animate={{ y: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}>
-              <ArrowDown size={13} />
-            </motion.span>
-          </span>
-          Scroll to explore the venue
-        </motion.div>
       </motion.div>
     </section>
   );
