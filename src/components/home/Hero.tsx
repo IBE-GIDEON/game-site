@@ -91,25 +91,28 @@ export default function Hero() {
               as="h1"
               play={ready}
               delay={0.15}
-              lines={["Sim racing,", <span key="b" className="text-white/55">done properly.</span>]}
-              className="text-[clamp(3.1rem,8.6vw,8.4rem)] text-white"
+              lines={["Sim racing,", <span key="b" className="text-signal">done properly.</span>]}
+              className="text-[clamp(2.3rem,7.1vw,6.1rem)] text-white"
             />
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={ready ? { opacity: 1, y: 0 } : undefined}
               transition={{ duration: 1, delay: 0.45, ease }}
-              className="mt-7 max-w-xl text-[16px] leading-relaxed text-smoke sm:text-[18px]"
+              className="mt-5 max-w-xl text-[16px] leading-relaxed text-smoke sm:mt-7 sm:text-[18px]"
             >
-              Peterborough&apos;s premium racing simulator venue. Direct-drive rigs, real-world circuits and a
-              paddock atmosphere for solo sessions, race nights, parties and corporate events.
+              <span className="sm:hidden">Peterborough&apos;s premium racing simulator venue.</span>
+              <span className="hidden sm:inline">
+                Peterborough&apos;s premium racing simulator venue. Direct-drive rigs, real-world circuits and a
+                paddock atmosphere for solo sessions, race nights, parties and corporate events.
+              </span>
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={ready ? { opacity: 1, y: 0 } : undefined}
               transition={{ duration: 1, delay: 0.55, ease }}
-              className="mt-9 flex flex-wrap gap-3"
+              className="mt-8 grid gap-3 sm:mt-9 sm:flex sm:flex-wrap"
             >
               <Button href="/book" size="lg">
                 Book a session

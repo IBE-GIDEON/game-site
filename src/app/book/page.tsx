@@ -21,17 +21,17 @@ export default function BookPage() {
         intro="Choose your experience, pick a time and you're set. Seat, wheel and assists are adjusted for you on arrival."
       />
 
-      <section className="container-x pb-24 sm:pb-32">
+      <section className="container-x pb-16 sm:pb-32">
         <Suspense fallback={<div className="h-[640px] animate-pulse bg-white/[0.03]" />}>
           <BookingWidget />
         </Suspense>
       </section>
 
-      <section className="container-x pb-24 sm:pb-32">
+      <section className="container-x pb-16 sm:pb-32">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Eyebrow className="mb-6">Gift cards</Eyebrow>
-            <MaskHeading lines={["The gift of racing.", <span key="2" className="text-white/50">More than a present.</span>]} className="text-[clamp(2rem,4.4vw,3.6rem)] text-white" />
+            <MaskHeading lines={["The gift of racing.", <span key="2" className="text-white/50">More than a present.</span>]} className="text-[clamp(1.8rem,3.7vw,3.02rem)] text-white" />
             <Reveal>
               <p className="mt-6 max-w-md text-[16px] leading-relaxed text-smoke">
                 Delivered by email and valid for 180 days from purchase. The recipient books whenever suits them.

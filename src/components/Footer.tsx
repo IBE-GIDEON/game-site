@@ -38,7 +38,7 @@ export default function Footer() {
 
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:col-span-7">
           <div>
-            <h3 className="text-[13px] text-ash">Explore</h3>
+            <h3 className="font-label text-[11.5px] text-ash">Explore</h3>
             <ul className="mt-4 space-y-2.5 text-[15px]">
               {[{ href: "/", label: "Home" }, ...nav, { href: "/book", label: "Book a session" }].map((l) => (
                 <li key={l.href}>
@@ -50,7 +50,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-[13px] text-ash">Visit</h3>
+            <h3 className="font-label text-[11.5px] text-ash">Visit</h3>
             <address className="mt-4 text-[15px] not-italic leading-relaxed text-smoke">
               {site.address.map((l) => (
                 <span key={l} className="block">
@@ -68,7 +68,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="col-span-2 sm:col-span-1">
-            <h3 className="text-[13px] text-ash">Hours</h3>
+            <h3 className="font-label text-[11.5px] text-ash">Hours</h3>
             <ul className="mt-4 space-y-1.5 text-[14px]">
               {[3, 4, 5, 6, 0, 1, 2].map((d) => (
                 <li key={d} className="flex justify-between gap-4 text-smoke">

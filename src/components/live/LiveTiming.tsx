@@ -111,7 +111,7 @@ export default function LiveTiming({ compact = false }: { compact?: boolean }) {
             <TrackMap ref={mapRef} rows={rows} />
           </div>
 
-          <div className="relative mt-auto px-5 pb-5 sm:px-7 sm:pb-6">
+          <div className={clsx("relative mt-auto px-5 pb-5 sm:px-7 sm:pb-6", compact && "hidden sm:block")}>
             <div className="mb-3 flex items-center justify-between">
               <span className="text-[12px] text-ash">Race control</span>
               <div className="flex items-center gap-3 text-[11px] text-ash">
@@ -175,6 +175,7 @@ export default function LiveTiming({ compact = false }: { compact?: boolean }) {
                     className={clsx(
                       "relative grid grid-cols-[28px_1fr_auto_auto] items-center gap-x-3 border-b border-white/[0.05] px-5 py-3 last:border-b-0 sm:grid-cols-[28px_1fr_auto_auto_auto] sm:px-7",
                       justImproved && "bg-white/[0.025]",
+                      compact && i >= 4 && "max-sm:hidden",
                     )}
                   >
                     <span className="tabular font-mono text-[13px] text-smoke">{String(i + 1).padStart(2, "0")}</span>

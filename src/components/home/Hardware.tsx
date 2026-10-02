@@ -44,7 +44,7 @@ function PhotoCard({
           {spec ?? title}
         </div>
         <div>
-          <h3 className="font-display text-[clamp(1.5rem,2.4vw,2.1rem)] text-white">{title}</h3>
+          <h3 className="font-display text-[clamp(1.35rem,2.02vw,1.76rem)] text-white">{title}</h3>
           <p className="mt-3 max-w-md text-[15px] leading-relaxed text-smoke">{body}</p>
         </div>
       </div>
@@ -86,16 +86,16 @@ function BrakeTrace() {
 
 export default function Hardware() {
   return (
-    <section className="container-x pb-28 sm:pb-36">
-      <div className="mb-14 grid gap-8 lg:grid-cols-12 lg:items-end">
+    <section className="container-x pb-20 sm:pb-36">
+      <div className="mb-10 sm:mb-14 grid gap-8 lg:grid-cols-12 lg:items-end">
         <div className="lg:col-span-7">
           <Eyebrow className="mb-6">The hardware</Eyebrow>
           <MaskHeading
             lines={["Built by engineers.", <span key="2" className="text-white/50">Designed for drivers.</span>]}
-            className="text-[clamp(2.2rem,5.4vw,4.6rem)] text-white"
+            className="text-[clamp(1.98rem,4.54vw,3.86rem)] text-white"
           />
         </div>
-        <Reveal className="lg:col-span-5">
+        <Reveal className="hidden sm:block lg:col-span-5">
           <p className="max-w-md text-[16px] leading-relaxed text-smoke lg:ml-auto">
             The same class of equipment trusted by serious sim racers and professional drivers. No &ldquo;basic&rdquo;
             setups, no worn-out kit. Every rig is identical, so the fastest driver wins, not the luckiest.
@@ -103,8 +103,8 @@ export default function Hardware() {
         </Reveal>
       </div>
 
-      <div className="grid auto-rows-[minmax(260px,auto)] gap-4 md:grid-cols-6 lg:auto-rows-[300px]">
-        <Reveal className="md:col-span-6 lg:col-span-4 lg:row-span-2">
+      <div className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 sm:-mx-7 sm:px-7 md:mx-0 md:grid md:auto-rows-[minmax(260px,auto)] md:grid-cols-6 md:gap-4 md:overflow-visible md:px-0 lg:auto-rows-[300px]">
+        <Reveal className="h-[400px] w-[80vw] shrink-0 snap-start sm:w-[60vw] md:h-auto md:w-auto md:col-span-6 lg:col-span-4 lg:row-span-2">
           <PhotoCard
             src="/images/venue-rig-closeup.jpg"
             alt="Drivers on Racecraft Sim direct-drive rigs during a session"
@@ -112,12 +112,12 @@ export default function Hardware() {
             title="Direct-drive steering"
             body="The motor sits on the wheel shaft. Every slide, kerb and loss of grip arrives at your hands instantly, with nothing lost to belts or gears."
             spec="DD wheelbase"
-            className="h-full min-h-[420px]"
+            className="h-full md:min-h-[420px]"
             sizes="(min-width: 1024px) 66vw, 100vw"
           />
         </Reveal>
 
-        <Reveal delay={0.08} className="md:col-span-3 lg:col-span-2">
+        <Reveal delay={0.08} className="h-[400px] w-[80vw] shrink-0 snap-start sm:w-[60vw] md:h-auto md:w-auto md:col-span-3 lg:col-span-2">
           <div className="panel flex h-full flex-col justify-between p-6 sm:p-8">
             <div className="flex items-start justify-between">
               <span className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.12em] text-bone/80">
@@ -134,7 +134,7 @@ export default function Hardware() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.12} className="md:col-span-3 lg:col-span-2">
+        <Reveal delay={0.12} className="h-[400px] w-[80vw] shrink-0 snap-start sm:w-[60vw] md:h-auto md:w-auto md:col-span-3 lg:col-span-2">
           <PhotoCard
             src="/images/venue-rigs-row.jpg"
             alt="A row of identical rigid aluminium cockpits"
@@ -146,7 +146,7 @@ export default function Hardware() {
           />
         </Reveal>
 
-        <Reveal className="md:col-span-3">
+        <Reveal className="h-[400px] w-[80vw] shrink-0 snap-start sm:w-[60vw] md:h-auto md:w-auto md:col-span-3">
           <PhotoCard
             src="/images/venue-telemetry-screens.jpg"
             alt="Drivers racing on ultrawide displays with live timing overhead"
@@ -158,7 +158,7 @@ export default function Hardware() {
           />
         </Reveal>
 
-        <Reveal delay={0.08} className="md:col-span-3">
+        <Reveal delay={0.08} className="h-[400px] w-[80vw] shrink-0 snap-start sm:w-[60vw] md:h-auto md:w-auto md:col-span-3">
           <PhotoCard
             src="/images/race-cockpit.jpg"
             alt="Inside a stripped-out race car cockpit"

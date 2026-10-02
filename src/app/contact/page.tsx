@@ -27,7 +27,7 @@ export default function ContactPage() {
         intro="Bookings, corporate enquiries, partnerships or general questions. We usually reply within two hours."
       />
 
-      <section className="container-x pb-24 sm:pb-32">
+      <section className="container-x pb-16 sm:pb-32">
         <div className="grid gap-4 lg:grid-cols-12">
           <div className="grid content-start gap-4 lg:col-span-4">
             {channels.map(({ Icon, label, value, href }, i) => (
@@ -59,7 +59,7 @@ export default function ContactPage() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Eyebrow className="mb-6">FAQ</Eyebrow>
-            <MaskHeading lines={["Good to know", "before you go."]} className="text-[clamp(2rem,4vw,3.2rem)] text-white" />
+            <MaskHeading lines={["Good to know", "before you go."]} className="text-[clamp(1.8rem,3.36vw,2.69rem)] text-white" />
           </div>
           <Reveal className="lg:col-span-8">
             <Faq items={generalFaqs} />

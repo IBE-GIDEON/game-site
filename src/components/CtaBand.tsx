@@ -20,8 +20,8 @@ export default function CtaBand({
         </div>
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(100deg,rgb(8_8_10/0.92)_20%,rgb(8_8_10/0.55)_60%,rgb(8_8_10/0.2))]" />
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_80%_at_0%_100%,rgb(227_16_28/0.25),transparent_60%)]" />
-        <div className="px-6 py-20 sm:px-12 sm:py-28 lg:px-16 lg:py-32">
-          <MaskHeading lines={title} className="max-w-3xl text-[clamp(2.4rem,6.4vw,5.6rem)] text-white" />
+        <div className="px-6 py-14 sm:px-12 sm:py-28 lg:px-16 lg:py-32">
+          <MaskHeading lines={title} className="max-w-3xl text-[clamp(2.16rem,5.38vw,4.7rem)] text-white" />
           <Reveal delay={0.15}>
             <p className="mt-6 max-w-lg text-[16px] leading-relaxed text-smoke sm:text-[18px]">{body}</p>
             <div className="mt-10 flex flex-wrap gap-3">

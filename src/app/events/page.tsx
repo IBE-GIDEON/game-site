@@ -68,7 +68,7 @@ export default function EventsPage() {
       </PageHero>
 
       {packages.map((p, i) => (
-        <section key={p.id} id={p.id} className="container-x scroll-mt-24 py-20 sm:py-28">
+        <section key={p.id} id={p.id} className="container-x scroll-mt-24 py-14 sm:py-28">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
             <div className={i % 2 ? "lg:order-2 lg:col-span-6" : "lg:col-span-6"}>
               <ParallaxImage src={p.image} alt={p.alt} className="aspect-[4/3] border border-white/[0.07]" sizes="(min-width: 1024px) 50vw, 100vw" />
@@ -83,7 +83,7 @@ export default function EventsPage() {
                   <span className="rounded-[2px] bg-signal/15 px-3 py-1 text-[12px] text-signal-bright ring-1 ring-signal/30">{p.price}</span>
                 </div>
               </Reveal>
-              <MaskHeading lines={[p.title[0], <span key="2" className="text-white/50">{p.title[1]}</span>]} className="text-[clamp(2rem,4.4vw,3.6rem)] text-white" />
+              <MaskHeading lines={[p.title[0], <span key="2" className="text-white/50">{p.title[1]}</span>]} className="text-[clamp(1.8rem,3.7vw,3.02rem)] text-white" />
               <Reveal>
                 <p className="mt-7 max-w-lg text-[16px] leading-relaxed text-smoke">{p.body}</p>
                 <ul className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -102,11 +102,11 @@ export default function EventsPage() {
         </section>
       ))}
 
-      <section id="how-it-works" className="scroll-mt-24 border-y border-white/[0.07] bg-carbon/40 py-24 sm:py-32">
+      <section id="how-it-works" className="scroll-mt-24 border-y border-white/[0.07] bg-carbon/40 py-16 sm:py-32">
         <div className="container-x">
-          <div className="mb-14 max-w-3xl">
+          <div className="mb-10 sm:mb-14 max-w-3xl">
             <Eyebrow className="mb-6">How it works</Eyebrow>
-            <MaskHeading lines={["Three steps", <span key="2" className="text-white/50">to lights out.</span>]} className="text-[clamp(2rem,4.4vw,3.6rem)] text-white" />
+            <MaskHeading lines={["Three steps", <span key="2" className="text-white/50">to lights out.</span>]} className="text-[clamp(1.8rem,3.7vw,3.02rem)] text-white" />
           </div>
           <ol className="grid gap-4 md:grid-cols-3">
             {steps.map(({ Icon, title, body }, i) => (
@@ -126,11 +126,11 @@ export default function EventsPage() {
         </div>
       </section>
 
-      <section id="enquire" className="container-x scroll-mt-24 py-24 sm:py-32">
+      <section id="enquire" className="container-x scroll-mt-24 py-16 sm:py-32">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Eyebrow className="mb-6">Booking enquiry</Eyebrow>
-            <MaskHeading lines={["Tell us about", "your event."]} className="text-[clamp(2rem,4vw,3.2rem)] text-white" />
+            <MaskHeading lines={["Tell us about", "your event."]} className="text-[clamp(1.8rem,3.36vw,2.69rem)] text-white" />
             <Reveal>
               <p className="mt-6 max-w-sm text-[16px] leading-relaxed text-smoke">
                 Share a few details and we&apos;ll come back with availability and a quote. No commitment until you confirm.
@@ -143,11 +143,11 @@ export default function EventsPage() {
         </div>
       </section>
 
-      <section className="container-x pb-24 sm:pb-32">
+      <section className="container-x pb-16 sm:pb-32">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Eyebrow className="mb-6">FAQ</Eyebrow>
-            <MaskHeading lines={["Questions", "before the grid."]} className="text-[clamp(2rem,4vw,3.2rem)] text-white" />
+            <MaskHeading lines={["Questions", "before the grid."]} className="text-[clamp(1.8rem,3.36vw,2.69rem)] text-white" />
           </div>
           <Reveal className="lg:col-span-8">
             <Faq items={eventFaqs} />

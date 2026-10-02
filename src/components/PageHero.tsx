@@ -31,8 +31,8 @@ export default function PageHero({
       ref={ref}
       className={
         image
-          ? "relative flex min-h-[78svh] items-end overflow-hidden pb-14 pt-36 sm:pb-20"
-          : "relative overflow-hidden pb-12 pt-40 sm:pb-16 sm:pt-48"
+          ? "relative flex min-h-[62svh] items-end overflow-hidden pb-12 pt-28 sm:min-h-[78svh] sm:pb-20 sm:pt-36"
+          : "relative overflow-hidden pb-10 pt-32 sm:pb-16 sm:pt-48"
       }
     >
       {image && (
@@ -58,7 +58,7 @@ export default function PageHero({
         <motion.div initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : undefined} transition={{ duration: 0.8 }}>
           <Eyebrow className="mb-7">{eyebrow}</Eyebrow>
         </motion.div>
-        <MaskHeading as="h1" play={ready} lines={title} className="max-w-5xl text-[clamp(2.6rem,7vw,6.25rem)] text-white" />
+        <MaskHeading as="h1" play={ready} lines={title} className="max-w-5xl text-[clamp(2.34rem,5.88vw,5.25rem)] text-white" />
         {intro && (
           <motion.p
             initial={{ opacity: 0, y: 14 }}

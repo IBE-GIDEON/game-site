@@ -18,7 +18,7 @@ type Props = {
 } & Omit<ComponentProps<"button">, "className" | "children">;
 
 const base =
-  "group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-[2px] font-medium tracking-[-0.005em] transition-[background-color,border-color,color] duration-300 ease-out disabled:pointer-events-none disabled:opacity-40";
+  "group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-[2px] font-label transition-[background-color,border-color,color] duration-300 ease-out disabled:pointer-events-none disabled:opacity-40";
 
 const variants: Record<Variant, string> = {
   signal: "bg-signal text-white hover:bg-signal-bright",
@@ -28,8 +28,8 @@ const variants: Record<Variant, string> = {
 };
 
 const sizes = {
-  md: "h-11 px-5 text-[14px]",
-  lg: "h-13 px-7 text-[15px]",
+  md: "h-11 px-5 text-[12.5px]",
+  lg: "h-13 px-7 text-[13.5px]",
 };
 
 export default function Button({

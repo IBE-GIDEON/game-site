@@ -6,10 +6,13 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
-import { List, X } from "@phosphor-icons/react";
+import { ArrowRight, List, MapPin, Phone, WhatsappLogo, X } from "@phosphor-icons/react";
+import { useLenis } from "lenis/react";
 import { nav, site } from "@/lib/site";
 import Button from "./ui/Button";
 import OpenStatus from "./OpenStatus";
+
+const mobileLinks = [{ href: "/", label: "Home" }, ...nav];
 
 export default function Nav() {
   const pathname = usePathname();
@@ -24,10 +27,20 @@ export default function Nav() {
     setHidden(y > 400 && y > prev && !open);
   });
 
+  const lenis = useLenis();
+  const close = () => setOpen(false);
+
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
+    // lock the page behind the menu (Lenis drives scrolling, so stop it too)
     document.documentElement.style.overflow = open ? "hidden" : "";
-  }, [open]);
+    if (open) lenis?.stop();
+    else lenis?.start();
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, lenis]);
 
   return (
     <>
@@ -55,7 +68,7 @@ export default function Nav() {
                     <Link
                       href={item.href}
                       className={clsx(
-                        "relative flex h-full items-center text-[14px] transition-colors duration-300",
+                        "font-label relative flex h-full items-center text-[12.5px] transition-colors duration-300",
                         active ? "text-white" : "text-smoke hover:text-white",
                       )}
                     >
@@ -85,6 +98,7 @@ export default function Nav() {
                 onClick={() => setOpen((v) => !v)}
                 className="relative z-10 grid size-11 place-items-center rounded-[2px] border border-white/15 text-bone transition-colors hover:border-white/40 lg:hidden"
                 aria-expanded={open}
+                aria-controls="mobile-menu"
                 aria-label={open ? "Close menu" : "Open menu"}
               >
                 {open ? <X size={20} /> : <List size={20} />}
@@ -97,49 +111,72 @@ export default function Nav() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-menu"
             className="fixed inset-0 z-40 flex flex-col bg-ink lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.35 }}
+            transition={{ duration: 0.25 }}
           >
-            <div className="container-x flex flex-1 flex-col justify-between pb-8 pt-28">
-              <ul className="flex flex-col">
-                {[{ href: "/", label: "Home" }, ...nav, { href: "/book", label: "Book a session" }].map((item, i) => (
-                  <motion.li
-                    key={item.href}
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.06 * i + 0.05, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                    className="border-b border-white/[0.07]"
-                  >
-                    <Link
-                      href={item.href}
-                      className={clsx(
-                        "font-display flex items-center justify-between py-5 text-[clamp(1.75rem,8vw,2.75rem)]",
-                        pathname === item.href ? "text-white" : "text-smoke",
-                      )}
+            <div className="container-x flex flex-1 flex-col overflow-y-auto pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-20 sm:pt-24">
+              <ul className="border-t border-white/[0.08]">
+                {mobileLinks.map((item, i) => {
+                  const active = pathname === item.href;
+                  return (
+                    <motion.li
+                      key={item.href}
+                      initial={{ opacity: 0, x: -12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.04 * i + 0.05, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                      className="border-b border-white/[0.08]"
                     >
-                      {item.label}
-                      <span className="font-mono text-xs tracking-normal text-ash">0{i + 1}</span>
-                    </Link>
-                  </motion.li>
-                ))}
+                      <Link href={item.href} onClick={close} className="group flex items-center justify-between py-[18px]">
+                        <span className="flex items-center gap-3">
+                          <span className={clsx("h-5 w-[3px]", active ? "bg-signal" : "bg-white/10")} />
+                          <span className={clsx("font-display text-[22px]", active ? "text-white" : "text-bone/80")}>{item.label}</span>
+                        </span>
+                        <ArrowRight size={18} className="text-ash transition-transform group-active:translate-x-1" />
+                      </Link>
+                    </motion.li>
+                  );
+                })}
               </ul>
+
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="mt-10 space-y-4 text-sm text-smoke"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25, duration: 0.45 }}
+                className="mt-auto space-y-3 pt-10"
               >
-                <OpenStatus />
-                <p>
-                  {site.address.join(", ")}
-                  <br />
-                  <a href={site.phoneHref} className="text-bone">
-                    {site.phone}
-                  </a>
-                </p>
+                <Button href="/book" size="lg" className="w-full">
+                  Book a session
+                </Button>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { href: site.phoneHref, label: "Call", Icon: Phone },
+                    { href: site.whatsapp, label: "WhatsApp", Icon: WhatsappLogo },
+                    {
+                      href: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapsQuery)}`,
+                      label: "Directions",
+                      Icon: MapPin,
+                    },
+                  ].map(({ href, label, Icon }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target={href.startsWith("http") ? "_blank" : undefined}
+                      rel="noreferrer"
+                      className="font-label flex h-[68px] flex-col items-center justify-center gap-1.5 rounded-[2px] border border-white/10 text-[11px] text-bone transition-colors active:bg-white/[0.06]"
+                    >
+                      <Icon size={20} className="text-signal" />
+                      {label}
+                    </a>
+                  ))}
+                </div>
+                <div className="flex items-center justify-between pt-2 text-[12px] text-ash">
+                  <OpenStatus className="text-[12px]" />
+                  <span>{site.address[0]}, {site.address[2]}</span>
+                </div>
               </motion.div>
             </div>
           </motion.div>

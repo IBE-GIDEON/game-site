@@ -8,11 +8,11 @@ const fmt = (h: number) => `${h > 12 ? h - 12 : h}${h >= 12 ? "pm" : "am"}`;
 
 export default function Visit() {
   return (
-    <section className="container-x py-28 sm:py-36">
+    <section className="container-x py-20 sm:py-36">
       <div className="grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <Eyebrow className="mb-6">Visit us</Eyebrow>
-          <MaskHeading lines={["In the heart of", "Peterborough."]} className="text-[clamp(2.2rem,5vw,4.2rem)] text-white" />
+          <MaskHeading lines={["In the heart of", "Peterborough."]} className="text-[clamp(1.98rem,4.2vw,3.53rem)] text-white" />
           <Reveal>
             <OpenStatus className="mt-8" />
           </Reveal>
@@ -63,7 +63,7 @@ export default function Visit() {
         </div>
 
         <Reveal className="lg:col-span-7" y={40}>
-          <div className="relative h-full min-h-[420px] overflow-hidden border border-white/[0.07]">
+          <div className="relative h-full min-h-[260px] overflow-hidden sm:min-h-[420px] border border-white/[0.07]">
             <iframe
               title="Map showing Racecraft Sim in Peterborough"
               src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapsQuery)}&z=16&output=embed`}

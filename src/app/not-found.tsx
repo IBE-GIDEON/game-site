@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <section className="container-x flex min-h-[80svh] flex-col items-start justify-center pt-32">
       <span className="font-mono text-[13px] text-signal-bright">DNF · 404</span>
-      <h1 className="font-display mt-6 text-[clamp(2.6rem,7vw,6rem)] text-white">
+      <h1 className="font-display mt-6 text-[clamp(2.34rem,5.88vw,5.04rem)] text-white">
         Off track.
         <span className="block text-white/50">This page isn&apos;t on the map.</span>
       </h1>

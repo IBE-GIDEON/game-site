@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { Eyebrow, Reveal } from "@/components/ui/Reveal";
 import CountUp from "@/components/ui/CountUp";
 
+const TEXT_SHORT = "This isn't arcade racing. Identical flagship rigs, maintained like race cars.";
 const TEXT =
   "This isn't arcade racing. Racecraft Sim was founded by a professional engineer with one goal: an authentic, professional-grade sim racing experience without compromise. Identical flagship rigs, maintained like race cars, in a room that feels closer to a paddock than a games venue.";
 
@@ -24,32 +25,38 @@ const stats = [
   { value: 2, suffix: "hr", label: "typical reply to enquiries" },
 ];
 
-export default function Manifesto() {
+function ScrollText({ text, className }: { text: string; className: string }) {
   const ref = useRef<HTMLParagraphElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 85%", "end 45%"] });
-  const words = TEXT.split(" ");
-
+  const words = text.split(" ");
   return (
-    <section className="container-x py-28 sm:py-36 lg:py-44">
-      <div className="grid gap-12 lg:grid-cols-12">
+    <p ref={ref} className={className}>
+      {words.map((w, i) => (
+        <Word key={i} word={w} progress={scrollYProgress} range={[i / words.length, (i + 1) / words.length]} />
+      ))}
+    </p>
+  );
+}
+
+export default function Manifesto() {
+  return (
+    <section className="container-x py-20 sm:py-36 lg:py-44">
+      <div className="grid gap-6 sm:gap-12 lg:grid-cols-12">
         <div className="lg:col-span-3">
           <Eyebrow>Not an arcade</Eyebrow>
         </div>
         <div className="lg:col-span-9">
-          <p ref={ref} className="font-display text-[clamp(1.6rem,3.6vw,3.15rem)] !leading-[1.12] text-white">
-            {words.map((w, i) => (
-              <Word key={i} word={w} progress={scrollYProgress} range={[i / words.length, (i + 1) / words.length]} />
-            ))}
-          </p>
+          <ScrollText text={TEXT_SHORT} className="font-statement text-[1.6rem] text-white sm:hidden" />
+          <ScrollText text={TEXT} className="font-statement hidden text-[clamp(1.45rem,3.3vw,2.85rem)] text-white sm:block" />
 
-          <div className="mt-20 grid grid-cols-2 gap-px overflow-hidden border border-white/[0.07] bg-white/[0.07] md:grid-cols-4">
+          <div className="mt-10 grid grid-cols-2 sm:mt-20 gap-px overflow-hidden border border-white/[0.07] bg-white/[0.07] md:grid-cols-4">
             {stats.map((s, i) => (
-              <Reveal key={s.label} delay={i * 0.08} className="bg-ink p-6 sm:p-8">
-                <div className="font-display tabular text-[clamp(2.4rem,4.5vw,3.6rem)] text-white">
+              <Reveal key={s.label} delay={i * 0.08} className="bg-ink p-5 sm:p-8">
+                <div className="font-display tabular text-[clamp(2.16rem,3.78vw,3.02rem)] text-white">
                   <CountUp to={s.value} />
                   <span className="text-signal">{s.suffix}</span>
                 </div>
-                <div className="mt-3 text-[14px] text-smoke">{s.label}</div>
+                <div className="mt-2 text-[13px] text-smoke sm:mt-3 sm:text-[14px]">{s.label}</div>
               </Reveal>
             ))}
           </div>

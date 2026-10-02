@@ -1,24 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Barlow, Saira } from "next/font/google";
+import { Saira } from "next/font/google";
 import "./globals.css";
 import Loader from "@/components/Loader";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
+import MobileBookBar from "@/components/MobileBookBar";
 
-// Saira: squared motorsport-timing forms, used semi-condensed for headlines, lap times and data labels.
+// One family for the whole site, matching the logo wordmark: Saira's bold italic
+// (widened) for display type, upright Saira for reading and data.
 const saira = Saira({
   subsets: ["latin"],
   axes: ["wdth"],
+  style: ["normal", "italic"],
   variable: "--font-saira",
-  display: "swap",
-});
-
-// Barlow: DIN-style engineering grotesque for body copy and UI.
-const barlow = Barlow({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-barlow",
   display: "swap",
 });
 
@@ -45,7 +40,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-GB" className={`${saira.variable} ${barlow.variable}`}>
+    <html lang="en-GB" className={saira.variable}>
       <body className="grain min-h-dvh">
         <Loader />
         <SmoothScroll>
@@ -58,6 +53,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <Nav />
           <main id="main">{children}</main>
           <Footer />
+          <MobileBookBar />
         </SmoothScroll>
       </body>
     </html>

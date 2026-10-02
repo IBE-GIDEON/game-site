@@ -15,7 +15,7 @@
   --color-pb: #2bd576;
   --color-amber: #f5b800;
 
-  --font-sans: var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-saira), ui-sans-serif, system-ui, sans-serif;
   /* "mono" slots (lap times, rig labels, gaps) use Saira's tabular figures, not a code font */
   --font-mono: var(--font-saira), ui-sans-serif, system-ui, sans-serif;
 
@@ -90,19 +90,40 @@
   }
 }
 
-/* Saira semi-condensed for headlines: the squared forms of race timing graphics, set in sentence case. */
+/* Display type follows the logo wordmark: bold, italic, widened capitals. */
 @utility font-display {
   font-family: var(--font-saira), ui-sans-serif, system-ui, sans-serif;
-  font-variation-settings: "wdth" 87.5;
-  font-weight: 600;
+  font-style: italic;
+  font-variation-settings: "wdth" 108;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  line-height: 0.94;
+}
+/* Same voice for small UI labels: buttons, nav, eyebrows. */
+@utility font-label {
+  font-family: var(--font-saira), ui-sans-serif, system-ui, sans-serif;
+  font-style: italic;
+  font-variation-settings: "wdth" 104;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+}
+/* Long display copy (manifesto, quotes) keeps the family but stays readable. */
+@utility font-statement {
+  font-family: var(--font-saira), ui-sans-serif, system-ui, sans-serif;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-weight: 500;
+  text-transform: none;
   letter-spacing: -0.012em;
-  line-height: 0.96;
+  line-height: 1.16;
 }
 /* data type: Saira semi-condensed with fixed-width digits so ticking times never jitter.
    Kept in the base layer so per-element tracking/weight utilities still win. */
 @layer base {
   .font-mono {
-    font-variation-settings: "wdth" 87.5;
+    font-variation-settings: "wdth" 96;
     font-weight: 500;
     font-variant-numeric: tabular-nums;
   }

@@ -30,7 +30,7 @@ export default function TimingPage() {
         </div>
       </PageHero>
 
-      <section className="container-x space-y-4 pb-24 sm:pb-32">
+      <section className="container-x space-y-4 pb-16 sm:pb-32">
         <Reveal y={40}>
           <LiveTiming />
         </Reveal>
@@ -39,13 +39,13 @@ export default function TimingPage() {
         </Reveal>
       </section>
 
-      <section className="container-x pb-24 sm:pb-32">
-        <div className="mb-12 grid gap-8 lg:grid-cols-12 lg:items-end">
+      <section className="container-x pb-16 sm:pb-32">
+        <div className="mb-10 sm:mb-12 grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <Eyebrow className="mb-6">Monthly leaderboard</Eyebrow>
             <MaskHeading
               lines={[`${monthly.track}, ${monthly.month}.`, <span key="2" className="text-white/50">The record fell on the 29th.</span>]}
-              className="text-[clamp(2rem,4.6vw,3.8rem)] text-white"
+              className="text-[clamp(1.8rem,3.86vw,3.19rem)] text-white"
             />
           </div>
           <Reveal className="lg:col-span-5">
@@ -128,7 +128,7 @@ export default function TimingPage() {
         </div>
       </section>
 
-      <section className="container-x pb-24 sm:pb-32">
+      <section className="container-x pb-16 sm:pb-32">
         <Reveal>
           <div className="group relative isolate grid overflow-hidden border border-white/[0.08] lg:grid-cols-2">
             <div className="relative min-h-[320px]">
@@ -146,7 +146,7 @@ export default function TimingPage() {
                 <Flag size={16} className="text-signal" />
                 Track of the month · September
               </span>
-              <h2 className="font-display mt-6 text-[clamp(2rem,4vw,3.4rem)] text-white">Circuit de Barcelona-Catalunya</h2>
+              <h2 className="font-display mt-6 text-[clamp(1.8rem,3.36vw,2.86rem)] text-white">Circuit de Barcelona-Catalunya</h2>
               <p className="mt-5 max-w-md text-[16px] leading-relaxed text-smoke">
                 New month, new circuit, new challenge. Learn the long right of turn three, nail the final chicane and see if you
                 can be the fastest in September.

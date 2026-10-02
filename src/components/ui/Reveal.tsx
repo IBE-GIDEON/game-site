@@ -73,7 +73,7 @@ export function MaskHeading({
 
 export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <div className={clsx("flex items-center gap-2.5 text-[13px] text-smoke", className)}>
+    <div className={clsx("font-label flex items-center gap-2.5 text-[11.5px] text-smoke", className)}>
       <span className="h-px w-6 bg-signal" />
       {children}
     </div>

@@ -50,7 +50,7 @@ export default function EnquiryForm() {
             <span className="grid size-14 place-items-center rounded-[2px] bg-pb/15 text-pb ring-1 ring-pb/30">
               <CheckCircle size={28} weight="fill" />
             </span>
-            <h3 className="font-display mt-8 text-[clamp(2rem,4vw,3rem)] text-white">You&apos;re on the grid, {name}.</h3>
+            <h3 className="font-display mt-8 text-[clamp(1.8rem,3.36vw,2.52rem)] text-white">You&apos;re on the grid, {name}.</h3>
             <p className="mt-4 max-w-md text-[16px] leading-relaxed text-smoke">
               We&apos;ve received your enquiry for {drivers} drivers. We&apos;ll confirm availability and send your invoice,
               usually within two hours. Need it faster? Call or WhatsApp {site.phone}.

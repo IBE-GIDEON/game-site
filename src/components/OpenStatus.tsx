@@ -48,7 +48,7 @@ export default function OpenStatus({ className }: { className?: string }) {
   }, []);
 
   return (
-    <div className={clsx("flex items-center gap-2 text-[13px] text-smoke", className)}>
+    <div className={clsx("flex items-center gap-2 text-smoke", !className?.includes("text-[") && "text-[13px]", className)}>
       <span className="relative flex size-2">
         <span
           className={clsx(

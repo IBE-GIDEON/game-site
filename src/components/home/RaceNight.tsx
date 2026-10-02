@@ -40,27 +40,30 @@ export default function RaceNight() {
   const fill = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="relative overflow-hidden border-y border-white/[0.07] bg-carbon/40 py-28 sm:py-36">
+    <section className="relative overflow-hidden border-y border-white/[0.07] bg-carbon/40 py-20 sm:py-36">
       <div className="container-x">
-        <div className="grid gap-16 lg:grid-cols-12">
+        <div className="grid gap-10 sm:gap-16 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-28">
               <Eyebrow className="mb-6">Friday night tournament</Eyebrow>
               <MaskHeading
                 lines={["Sixteen drivers.", "Four hours.", <span key="3" className="text-signal-bright">One podium.</span>]}
-                className="text-[clamp(2.2rem,5vw,4.2rem)] text-white"
+                className="text-[clamp(1.98rem,4.2vw,3.53rem)] text-white"
               />
               <Reveal>
-                <p className="mt-8 max-w-md text-[16px] leading-relaxed text-smoke">
-                  One car, one track, eight rigs. Hot-lap qualifying sets the grid, heats and semis decide the final, and
-                  every driver is guaranteed at least two hours of racing.
+                <p className="mt-6 max-w-md text-[15px] leading-relaxed text-smoke sm:mt-8 sm:text-[16px]">
+                  One car, one track, eight rigs.
+                  <span className="hidden sm:inline">
+                    {" "}Hot-lap qualifying sets the grid, heats and semis decide the final, and every driver is guaranteed at
+                    least two hours of racing.
+                  </span>
                 </p>
               </Reveal>
 
-              <Reveal delay={0.1} className="mt-10">
+              <Reveal delay={0.1} className="mt-8 sm:mt-10">
                 <div className="glass flex items-stretch overflow-hidden">
                   <div className="border-r border-white/10 px-6 py-5">
-                    <div className="text-[12px] text-ash">Entry</div>
+                    <div className="font-label text-[11px] text-ash">Entry</div>
                     <div className="font-display mt-1 text-[2.6rem] text-white">£{raceNight.price}</div>
                   </div>
                   <div className="flex flex-1 flex-col justify-center gap-2 px-6 py-5 text-[14px] text-smoke">
@@ -75,9 +78,9 @@ export default function RaceNight() {
                   </div>
                 </div>
               </Reveal>
-              <Reveal delay={0.15} className="mt-6 flex flex-wrap gap-3">
+              <Reveal delay={0.15} className="mt-6 grid gap-3 sm:flex sm:flex-wrap">
                 <Button href={site.bookingUrl}>Enter Friday&apos;s race</Button>
-                <Button href="/timing" variant="outline">
+                <Button href="/timing" variant="outline" className="max-sm:hidden">
                   See the leaderboard
                 </Button>
               </Reveal>
@@ -92,27 +95,27 @@ export default function RaceNight() {
               sizes="(min-width: 1024px) 58vw, 100vw"
             />
 
-            <div className="mt-14 grid gap-12 md:grid-cols-[1.25fr_1fr]">
+            <div className="mt-10 grid gap-12 sm:mt-14 md:grid-cols-[1.25fr_1fr]">
               <div>
-                <h3 className="mb-6 text-[13px] text-ash">Run of the night</h3>
+                <h3 className="font-label mb-5 text-[11.5px] text-ash sm:mb-6">Run of the night</h3>
                 <ol ref={listRef} className="relative">
                   <span className="absolute bottom-3 left-[5px] top-3 w-px bg-white/10" />
                   <motion.span className="absolute left-[5px] top-3 w-px origin-top bg-signal" style={{ height: fill }} />
                   {raceNight.schedule.map((s, i) => (
-                    <Reveal as="li" key={s.time} delay={i * 0.04} className="relative pb-7 pl-8 last:pb-0">
+                    <Reveal as="li" key={s.time} delay={i * 0.04} className="relative pb-4 pl-8 last:pb-0 sm:pb-7">
                       <span className="absolute left-0 top-1.5 size-[11px] rounded-full border-2 border-ink bg-steel ring-1 ring-white/20" />
                       <div className="flex items-baseline gap-3">
                         <span className="font-mono text-[12px] text-signal-bright">{s.time}</span>
-                        <span className="text-[16px] font-medium text-bone">{s.title}</span>
+                        <span className="text-[15px] font-medium text-bone sm:text-[16px]">{s.title}</span>
                       </div>
-                      <p className="mt-1 text-[14px] text-smoke">{s.detail}</p>
+                      <p className="mt-1 hidden text-[14px] text-smoke sm:block">{s.detail}</p>
                     </Reveal>
                   ))}
                 </ol>
               </div>
 
-              <div>
-                <h3 className="mb-6 text-[13px] text-ash">Points system</h3>
+              <div className="hidden md:block">
+                <h3 className="font-label mb-6 text-[11.5px] text-ash">Points system</h3>
                 <PointsChart />
                 <div className="mt-10 grid grid-cols-2 gap-3">
                   {[

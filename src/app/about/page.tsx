@@ -44,11 +44,11 @@ export default function AboutPage() {
         imageAlt="The Racecraft Sim venue floor with rows of rigs"
       />
 
-      <section className="container-x py-24 sm:py-32">
+      <section className="container-x py-16 sm:py-32">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <Eyebrow className="mb-6">Our story</Eyebrow>
-            <MaskHeading lines={["Built by engineers.", <span key="2" className="text-white/50">Designed for drivers.</span>]} className="text-[clamp(2rem,4.4vw,3.6rem)] text-white" />
+            <MaskHeading lines={["Built by engineers.", <span key="2" className="text-white/50">Designed for drivers.</span>]} className="text-[clamp(1.8rem,3.7vw,3.02rem)] text-white" />
             <Reveal>
               <div className="mt-8 space-y-5 text-[16px] leading-relaxed text-smoke">
                 <p>
@@ -88,7 +88,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="container-x pb-24 sm:pb-32">
+      <section className="container-x pb-16 sm:pb-32">
         <Reveal>
           <h2 className="mb-8 text-[13px] text-ash">The same class of equipment trusted by serious sim racers and professional drivers</h2>
         </Reveal>
@@ -103,11 +103,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-y border-white/[0.07] bg-carbon/40 py-24 sm:py-32">
+      <section className="border-y border-white/[0.07] bg-carbon/40 py-16 sm:py-32">
         <div className="container-x grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Eyebrow className="mb-6">Quality before quantity</Eyebrow>
-            <MaskHeading lines={["A premium experience,", <span key="2" className="text-white/50">not a gimmick.</span>]} className="text-[clamp(2rem,4.4vw,3.6rem)] text-white" />
+            <MaskHeading lines={["A premium experience,", <span key="2" className="text-white/50">not a gimmick.</span>]} className="text-[clamp(1.8rem,3.7vw,3.02rem)] text-white" />
             <Reveal>
               <p className="mt-8 max-w-md text-[16px] leading-relaxed text-smoke">
                 We run a small number of identical, flagship rigs so every driver gets the same high standard. There are no
@@ -129,10 +129,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="container-x py-24 sm:py-32">
-        <div className="mb-12 max-w-3xl">
+      <section className="container-x py-16 sm:py-32">
+        <div className="mb-10 sm:mb-12 max-w-3xl">
           <Eyebrow className="mb-6">Who it&apos;s for</Eyebrow>
-          <MaskHeading lines={["Closer to a paddock", <span key="2" className="text-white/50">than a gaming venue.</span>]} className="text-[clamp(2rem,4.4vw,3.6rem)] text-white" />
+          <MaskHeading lines={["Closer to a paddock", <span key="2" className="text-white/50">than a gaming venue.</span>]} className="text-[clamp(1.8rem,3.7vw,3.02rem)] text-white" />
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {audiences.map(({ Icon, title, body }, i) => (
@@ -150,7 +150,7 @@ export default function AboutPage() {
 
         <Reveal className="mt-24">
           <figure className="mx-auto max-w-4xl text-center">
-            <blockquote className="font-display text-[clamp(1.5rem,3.2vw,2.6rem)] !leading-[1.15] text-white">
+            <blockquote className="font-statement text-[clamp(1.4rem,3vw,2.4rem)] text-white">
               &ldquo;We invest in professional-grade equipment, maintain it properly, and deliver a consistent experience across every rig, because details matter.&rdquo;
             </blockquote>
             <figcaption className="mt-8 text-[14px] text-smoke">Our values, Racecraft Sim</figcaption>
