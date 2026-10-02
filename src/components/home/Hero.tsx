@@ -87,15 +87,6 @@ export default function Hero() {
       <motion.div style={{ opacity: fade }} className="container-x relative z-10 pb-10 sm:pb-14 lg:pb-16">
         <div className="grid items-end gap-10 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={ready ? { opacity: 1, y: 0 } : undefined}
-              transition={{ duration: 0.8, delay: 0.1, ease }}
-              className="mb-8 inline-flex items-center gap-3 border-l-2 border-signal py-0.5 pl-3 text-[13px] text-bone/90"
-            >
-              Race night every Friday from 7pm
-            </motion.div>
-
             <MaskHeading
               as="h1"
               play={ready}
