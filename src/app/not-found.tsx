@@ -1,0 +1,19 @@
+import Button from "@/components/ui/Button";
+
+export default function NotFound() {
+  return (
+    <section className="container-x flex min-h-[80svh] flex-col items-start justify-center pt-32">
+      <span className="font-mono text-[13px] text-signal-bright">DNF · 404</span>
+      <h1 className="font-display mt-6 text-[clamp(2.6rem,7vw,6rem)] text-white">
+        Off track.
+        <span className="block text-white/50">This page isn&apos;t on the map.</span>
+      </h1>
+      <div className="mt-10 flex flex-wrap gap-3">
+        <Button href="/">Back to the pits</Button>
+        <Button href="/book" variant="outline">
+          Book a session
+        </Button>
+      </div>
+    </section>
+  );
+}

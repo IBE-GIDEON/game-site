@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #08080a;
+  --color-carbon: #0f0f12;
+  --color-graphite: #17171b;
+  --color-steel: #24242a;
+  --color-bone: #f2f1ee;
+  --color-smoke: #a3a3ab;
+  --color-ash: #6c6c75;
+  --color-signal: #e3101c;
+  --color-signal-bright: #ff2a35;
+  --color-signal-deep: #9e0b13;
+  --color-purple: #a970ff;
+  --color-pb: #2bd576;
+  --color-amber: #f5b800;
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-pulse-dot: pulse-dot 1.6s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.8); }
+  }
+}
+
+/* Start-light loader runs on CSS so it plays before hydration. */
+@keyframes rc-light-on {
+  to { background-color: #ff1e2a; box-shadow: 0 0 14px 2px rgb(255 30 42 / 0.75); }
+}
+@keyframes rc-light-off {
+  to { background-color: #1d1d22; box-shadow: none; }
+}
+@keyframes rc-fade-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes rc-show {
+  to { opacity: 1; }
+}
+.rc-light {
+  background-color: #1d1d22;
+  animation:
+    rc-light-on 0.12s linear var(--d) forwards,
+    rc-light-off 0.12s linear 1.6s forwards;
+}
+.rc-logo { opacity: 0; animation: rc-fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+/* failsafe: never trap the visitor behind the loader if scripts are slow or blocked */
+@keyframes rc-failsafe { to { opacity: 0; visibility: hidden; } }
+.rc-loader { animation: rc-failsafe 0.6s ease 4.5s forwards; }
+.rc-go { opacity: 0; animation: rc-show 0.2s ease-out 1.6s forwards; }
+
+@layer base {
+  html {
+    background: var(--color-ink);
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-ink);
+    color: var(--color-bone);
+    font-family: var(--font-sans);
+    font-variation-settings: "wdth" 100;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--color-signal);
+    color: white;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-signal-bright);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  img {
+    user-select: none;
+  }
+}
+
+/* Expanded cut of Archivo for headlines: reads like a motorsport livery without shouting. */
+@utility font-display {
+  font-variation-settings: "wdth" 112;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+@utility font-wide {
+  font-variation-settings: "wdth" 112;
+}
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility container-x {
+  width: 100%;
+  max-width: 1360px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 40rem) { padding-inline: 1.75rem; }
+  @media (width >= 64rem) { padding-inline: 2.5rem; }
+}
+
+@utility hairline {
+  border-color: rgb(255 255 255 / 0.08);
+}
+
+/* Solid raised surface for content sitting on photography. No blur, no gloss. */
+@utility glass {
+  background: rgb(12 12 14 / 0.94);
+  border: 1px solid rgb(255 255 255 / 0.1);
+}
+
+@utility panel {
+  background: #0e0e11;
+  border: 1px solid rgb(255 255 255 / 0.08);
+}
+
+/* Fine film grain over the whole page; keeps large dark areas from looking flat. */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
