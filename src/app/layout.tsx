@@ -1,21 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, JetBrains_Mono } from "next/font/google";
+import { Barlow, Saira } from "next/font/google";
 import "./globals.css";
 import Loader from "@/components/Loader";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 
-const archivo = Archivo({
+// Saira: squared motorsport-timing forms, used semi-condensed for headlines, lap times and data labels.
+const saira = Saira({
   subsets: ["latin"],
   axes: ["wdth"],
-  variable: "--font-archivo",
+  variable: "--font-saira",
   display: "swap",
 });
 
-const mono = JetBrains_Mono({
+// Barlow: DIN-style engineering grotesque for body copy and UI.
+const barlow = Barlow({
   subsets: ["latin"],
-  variable: "--font-jetbrains",
+  weight: ["400", "500", "600"],
+  variable: "--font-barlow",
   display: "swap",
 });
 
@@ -42,7 +45,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-GB" className={`${archivo.variable} ${mono.variable}`}>
+    <html lang="en-GB" className={`${saira.variable} ${barlow.variable}`}>
       <body className="grain min-h-dvh">
         <Loader />
         <SmoothScroll>

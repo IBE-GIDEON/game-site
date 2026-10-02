@@ -92,7 +92,7 @@ export default function Hero() {
               play={ready}
               delay={0.15}
               lines={["Sim racing,", <span key="b" className="text-white/55">done properly.</span>]}
-              className="text-[clamp(2.75rem,7.4vw,7rem)] text-white"
+              className="text-[clamp(3.1rem,8.6vw,8.4rem)] text-white"
             />
 
             <motion.p
