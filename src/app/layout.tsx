@@ -6,6 +6,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import MobileBookBar from "@/components/MobileBookBar";
+import FooterGate from "@/components/FooterGate";
 
 // One family for the whole site, matching the logo wordmark: Saira's bold italic
 // (widened) for display type, upright Saira for reading and data.
@@ -52,7 +53,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </a>
           <Nav />
           <main id="main">{children}</main>
-          <Footer />
+          <FooterGate>
+            <Footer />
+          </FooterGate>
           <MobileBookBar />
         </SmoothScroll>
       </body>
