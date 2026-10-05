@@ -10,7 +10,6 @@ import { ArrowRight, List, MapPin, Phone, WhatsappLogo, X } from "@phosphor-icon
 import { useLenis } from "lenis/react";
 import { nav, site } from "@/lib/site";
 import Button from "./ui/Button";
-import OpenStatus from "./OpenStatus";
 
 const mobileLinks = [{ href: "/", label: "Home" }, ...nav];
 
@@ -87,7 +86,6 @@ export default function Nav() {
             </ul>
 
             <div className="flex items-center gap-3">
-              <OpenStatus className="mr-3 hidden xl:flex" />
               <div className="hidden sm:block">
                 <Button href="/book" size="md">
                   Book a session
@@ -173,9 +171,8 @@ export default function Nav() {
                     </a>
                   ))}
                 </div>
-                <div className="flex items-center justify-between pt-2 text-[12px] text-ash">
-                  <OpenStatus className="text-[12px]" />
-                  <span>{site.address[0]}, {site.address[2]}</span>
+                <div className="pt-2 text-center text-[12px] text-ash">
+                  {site.address.join(", ")}
                 </div>
               </motion.div>
             </div>
