@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Envelope, Phone, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
+import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/BrandIcons";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
 import Faq from "@/components/ui/Faq";
@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 };
 
 const channels = [
-  { Icon: Phone, label: "Call", value: site.phone, href: site.phoneHref },
-  { Icon: WhatsappLogo, label: "WhatsApp", value: "Message us", href: site.whatsapp },
-  { Icon: Envelope, label: "Email", value: site.email, href: `mailto:${site.email}` },
+  { Icon: PhoneIcon, label: "Call", value: site.phone, href: site.phoneHref },
+  { Icon: WhatsAppIcon, label: "WhatsApp", value: "Message us", href: site.whatsapp },
+  { Icon: MailIcon, label: "Email", value: site.email, href: `mailto:${site.email}` },
 ];
 
 export default function ContactPage() {
@@ -38,8 +38,8 @@ export default function ContactPage() {
                   rel="noreferrer"
                   className="glass group flex items-center gap-4 p-5 transition-colors duration-300 hover:bg-white/[0.09]"
                 >
-                  <span className="grid size-12 place-items-center rounded-[2px] bg-signal/10 text-signal-bright ring-1 ring-signal/20 transition-colors duration-300 group-hover:bg-signal group-hover:text-white">
-                    <Icon size={22} />
+                  <span className="grid w-8 shrink-0 place-items-center">
+                    <Icon size={28} />
                   </span>
                   <span>
                     <span className="block text-[12px] text-ash">{label}</span>

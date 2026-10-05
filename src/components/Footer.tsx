@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FacebookLogo, InstagramLogo, XLogo, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
+import { FacebookIcon, InstagramIcon, WhatsAppIcon, XIcon } from "@/components/ui/BrandIcons";
 import { hours, nav, site } from "@/lib/site";
 
 const fmt = (h: number) => `${h > 12 ? h - 12 : h}${h >= 12 ? "pm" : "am"}`;
@@ -15,12 +15,12 @@ export default function Footer() {
             A premium racing simulator venue in the centre of Peterborough. Professional rigs, real circuits, proper
             competition.
           </p>
-          <div className="mt-8 flex gap-2">
+          <div className="mt-8 flex items-center gap-6">
             {[
-              { href: site.social.instagram, label: "Instagram", Icon: InstagramLogo },
-              { href: site.social.facebook, label: "Facebook", Icon: FacebookLogo },
-              { href: site.social.x, label: "X", Icon: XLogo },
-              { href: site.whatsapp, label: "WhatsApp", Icon: WhatsappLogo },
+              { href: site.social.instagram, label: "Instagram", Icon: InstagramIcon },
+              { href: site.social.facebook, label: "Facebook", Icon: FacebookIcon },
+              { href: site.social.x, label: "X", Icon: XIcon },
+              { href: site.whatsapp, label: "WhatsApp", Icon: WhatsAppIcon },
             ].map(({ href, label, Icon }) => (
               <a
                 key={label}
@@ -28,9 +28,9 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={label}
-                className="grid size-10 place-items-center rounded-[2px] border border-white/10 bg-white/[0.03] text-smoke transition-all duration-300 hover:border-white/25 hover:text-white"
+                className="transition-opacity duration-300 hover:opacity-75"
               >
-                <Icon size={18} />
+                <Icon size={24} />
               </a>
             ))}
           </div>

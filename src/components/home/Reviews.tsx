@@ -1,4 +1,5 @@
-import { GoogleLogo, Star } from "@phosphor-icons/react/dist/ssr";
+import { Star } from "@phosphor-icons/react/dist/ssr";
+import { GoogleIcon } from "@/components/ui/BrandIcons";
 import { Eyebrow, MaskHeading } from "@/components/ui/Reveal";
 import { reviews } from "@/lib/site";
 
@@ -11,7 +12,7 @@ function Card({ r }: { r: (typeof reviews)[number] }) {
             <Star key={i} size={14} weight="fill" />
           ))}
         </div>
-        <GoogleLogo size={16} className="text-ash" />
+        <GoogleIcon size={18} />
       </div>
       <blockquote className="mt-5 flex-1 text-[16px] leading-relaxed text-bone/90">&ldquo;{r.text}&rdquo;</blockquote>
       <figcaption className="mt-6 flex items-center gap-3 border-t border-white/[0.07] pt-5">

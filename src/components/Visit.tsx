@@ -1,4 +1,5 @@
-import { Clock, LetterCircleP, MapPin, Phone } from "@phosphor-icons/react/dist/ssr";
+import { Clock } from "@phosphor-icons/react/dist/ssr";
+import { MapsIcon, ParkingIcon, PhoneIcon } from "@/components/ui/BrandIcons";
 import { Eyebrow, MaskHeading, Reveal } from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import OpenStatus from "@/components/OpenStatus";
@@ -19,12 +20,14 @@ export default function Visit() {
 
           <div className="mt-10 space-y-px overflow-hidden border border-white/[0.07] bg-white/[0.07]">
             {[
-              { Icon: MapPin, title: "Address", body: site.address.join(", ") },
-              { Icon: LetterCircleP, title: "Parking", body: "Monk Stone House Car Park, PE1 1SA. Pay with RingGo." },
-              { Icon: Phone, title: "Call or WhatsApp", body: site.phone },
+              { Icon: MapsIcon, title: "Address", body: site.address.join(", ") },
+              { Icon: ParkingIcon, title: "Parking", body: "Monk Stone House Car Park, PE1 1SA. Pay with RingGo." },
+              { Icon: PhoneIcon, title: "Call or WhatsApp", body: site.phone },
             ].map(({ Icon, title, body }, i) => (
               <Reveal key={title} delay={i * 0.06} className="flex gap-4 bg-ink p-5">
-                <Icon size={20} className="mt-0.5 shrink-0 text-signal" />
+                <span className="mt-0.5 grid w-6 shrink-0 place-items-start">
+                  <Icon size={22} />
+                </span>
                 <div>
                   <div className="text-[13px] text-ash">{title}</div>
                   <div className="mt-1 text-[15px] text-bone">{body}</div>
@@ -32,7 +35,7 @@ export default function Visit() {
               </Reveal>
             ))}
             <Reveal className="flex gap-4 bg-ink p-5">
-              <Clock size={20} className="mt-0.5 shrink-0 text-signal" />
+              <Clock size={22} className="mt-0.5 w-6 shrink-0 text-smoke" />
               <div className="flex-1">
                 <div className="text-[13px] text-ash">Opening hours</div>
                 <ul className="mt-2 grid grid-cols-2 gap-x-6 gap-y-1 text-[14px]">
@@ -74,9 +77,7 @@ export default function Visit() {
             <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/5" />
             <div className="glass absolute bottom-5 left-5 right-5 flex items-center justify-between gap-4 rounded-[2px] p-4 sm:right-auto">
               <div className="flex items-center gap-3">
-                <span className="grid size-10 place-items-center rounded-[2px] bg-signal">
-                  <MapPin size={18} weight="fill" />
-                </span>
+                <MapsIcon size={28} />
                 <div>
                   <div className="text-[14px] text-white">Racecraft Sim</div>
                   <div className="text-[12px] text-smoke">{site.address.join(", ")}</div>
