@@ -8,13 +8,13 @@ import Button from "@/components/ui/Button";
 import { site } from "@/lib/site";
 
 const services = ["Birthday", "Corporate", "Private hire", "Other"];
-const budgets = ["Under £300", "£300 – £500", "£500+"];
+const budgets = ["Under £300", "£300 to £500", "Over £500"];
 
 type Errors = Partial<Record<"first" | "last" | "email" | "date" | "time", string>>;
 
 export default function EnquiryForm() {
   const [service, setService] = useState<string[]>(["Birthday"]);
-  const [budget, setBudget] = useState("£300 – £500");
+  const [budget, setBudget] = useState("£300 to £500");
   const [drivers, setDrivers] = useState(10);
   const [errors, setErrors] = useState<Errors>({});
   const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
@@ -135,13 +135,13 @@ export default function EnquiryForm() {
             </div>
 
             <Field label="Anything else?" hint="Optional">
-              <Textarea name="notes" placeholder="Ages, cake, catering, a trophy for the boss…" />
+              <Textarea name="notes" placeholder="Ages, cake, catering or a trophy for the boss" />
             </Field>
 
             <div className="flex flex-col-reverse items-start justify-between gap-4 pt-2 sm:flex-row sm:items-center">
               <p className="text-[13px] text-ash">We reply within two hours during opening times.</p>
               <Button type="submit" size="lg" disabled={state === "sending"}>
-                {state === "sending" ? "Sending…" : "Request availability"}
+                {state === "sending" ? "Sending" : "Request availability"}
               </Button>
             </div>
           </motion.form>

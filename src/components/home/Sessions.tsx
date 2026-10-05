@@ -11,9 +11,9 @@ export default function Sessions() {
     <section className="container-x py-20 sm:py-36" id="pricing">
       <div className="mb-10 sm:mb-14 grid gap-8 lg:grid-cols-12 lg:items-end">
         <div className="lg:col-span-7">
-          <Eyebrow className="mb-6">Sessions & pricing</Eyebrow>
+          <Eyebrow className="mb-6">Sessions and pricing</Eyebrow>
           <MaskHeading
-            lines={["Pick your stint.", <span key="2" className="text-white/50">We'll set up the rest.</span>]}
+            lines={["Pick your stint", <span key="2" className="text-white/50">We'll set up the rest</span>]}
             className="text-[clamp(1.98rem,4.54vw,3.86rem)] text-white"
           />
         </div>
@@ -39,7 +39,7 @@ export default function Sessions() {
                   {s.featured && <span className="ml-2 text-signal-bright">Popular</span>}
                 </span>
                 <span className="mt-0.5 block text-[12px] text-ash">
-                  {s.minutes >= 60 ? `${s.minutes / 60} hr` : `${s.minutes} min`} · {s.rig} rig
+                  {s.minutes >= 60 ? `${s.minutes / 60} hr` : `${s.minutes} min`} on the {s.rig.toLowerCase()} rig
                 </span>
               </span>
               <span className="font-display text-[1.6rem] text-white">£{s.price}</span>

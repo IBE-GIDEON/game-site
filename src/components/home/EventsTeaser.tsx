@@ -17,7 +17,7 @@ const cards = [
     href: "/events#corporate",
     Icon: Briefcase,
     kicker: "Up to 24 racers",
-    title: "Corporate & team building",
+    title: "Corporate and team building",
     body: "Tournament formats, hosted events and client entertainment that people actually talk about on Monday.",
     src: "/images/venue-team-photo.jpg",
     alt: "A corporate team posing in front of the Racecraft Sim logo wall",
@@ -28,9 +28,9 @@ export default function EventsTeaser() {
   return (
     <section className="container-x py-20 sm:py-36">
       <div className="mb-10 sm:mb-14 max-w-3xl">
-        <Eyebrow className="mb-6">Parties & corporate</Eyebrow>
+        <Eyebrow className="mb-6">Parties and corporate</Eyebrow>
         <MaskHeading
-          lines={["Bring the whole grid.", <span key="2" className="text-white/50">We&apos;ll run race control.</span>]}
+          lines={["Bring the whole grid", <span key="2" className="text-white/50">We&apos;ll run race control</span>]}
           className="text-[clamp(1.98rem,4.54vw,3.86rem)] text-white"
         />
       </div>

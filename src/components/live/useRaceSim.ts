@@ -61,13 +61,13 @@ function gauss(rand: () => number) {
 }
 
 export function fmtLap(s: number | null) {
-  if (s === null) return "—";
+  if (s === null) return "";
   const m = Math.floor(s / 60);
   const rest = s - m * 60;
   return `${m}:${rest.toFixed(3).padStart(6, "0")}`;
 }
 export function fmtSector(s: number | null) {
-  return s === null ? "—" : s.toFixed(3);
+  return s === null ? "" : s.toFixed(3);
 }
 
 type Internal = {
@@ -125,7 +125,7 @@ export function useRaceSim(onFrame?: (rows: RowState[]) => void, running = true)
   if (!sim.current) sim.current = initial();
   const [rows, setRows] = useState<RowState[]>(() => sim.current.rows.map((r) => ({ ...r })));
   const [feed, setFeed] = useState<FeedItem[]>([
-    { id: 0, kind: "info", text: "Green flag. Open practice is live.", time: "" },
+    { id: 0, kind: "info", text: "Open practice is live", time: "" },
   ]);
   const frameCb = useRef(onFrame);
   frameCb.current = onFrame;
@@ -189,9 +189,9 @@ export function useRaceSim(onFrame?: (rows: RowState[]) => void, running = true)
             };
             if (lapTime < s.overallBest) {
               s.overallBest = lapTime;
-              push({ kind: "fastest", text: `Fastest lap: ${row.def.name}, ${fmtLap(lapTime)}` });
+              push({ kind: "fastest", text: `Fastest lap for ${row.def.name} in ${fmtLap(lapTime)}` });
             } else if (isPb) {
-              push({ kind: "pb", text: `Personal best for ${row.def.name}: ${fmtLap(lapTime)}` });
+              push({ kind: "pb", text: `Personal best for ${row.def.name} in ${fmtLap(lapTime)}` });
             }
             s.targets[i] = newTargets(row.def, rand);
             k = 0;

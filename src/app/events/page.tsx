@@ -9,7 +9,7 @@ import Faq from "@/components/ui/Faq";
 import { eventFaqs } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Parties & corporate events",
+  title: "Parties and corporate events",
   description:
     "Birthday parties from £180 and corporate team building for up to 24 racers. Tournament formats, live leaderboards and event hosting at Racecraft Sim, Peterborough.",
 };
@@ -20,7 +20,7 @@ const packages = [
     Icon: Cake,
     label: "Birthday parties",
     price: "From £180",
-    title: ["Their best birthday,", "on the grid."],
+    title: ["Their best birthday", "on the grid"],
     body:
       "Something fun, competitive and different. Practice sessions, qualifying, racing and a live leaderboard, all in a premium sim racing environment. Whether it's for children, teenagers or adults, we tailor the experience to your group.",
     points: ["Exclusive racing simulator party", "Perfect for kids, teens and adults", "Live leaderboard and podium", "Cake is welcome"],
@@ -30,9 +30,9 @@ const packages = [
   {
     id: "corporate",
     Icon: Briefcase,
-    label: "Corporate & team building",
+    label: "Corporate and team building",
     price: "Up to 24 racers",
-    title: ["Team building", "they'll actually talk about."],
+    title: ["Team building", "they'll actually talk about"],
     body:
       "Team building, staff socials, client entertainment, networking and work celebrations. Tournament-style formats, live leaderboards, event hosting and flexible packages give your team a professional but fun environment to relax and compete.",
     points: ["Tournament race formats", "Event hosting and briefing", "Live leaderboards on screen", "Private hire available"],
@@ -51,8 +51,8 @@ export default function EventsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Parties & corporate"
-        title={["Bring the whole grid.", <span key="2" className="text-white/50">We&apos;ll run race control.</span>]}
+        eyebrow="Parties and corporate"
+        title={["Bring the whole grid", <span key="2" className="text-white/50">We&apos;ll run race control</span>]}
         intro="Premium sim racing for birthdays, groups and team events, with professional rigs, simple packages and a venue built for unforgettable competition."
         image="/images/venue-team-photo.jpg"
         imageAlt="A group celebrating at Racecraft Sim"
@@ -106,7 +106,7 @@ export default function EventsPage() {
         <div className="container-x">
           <div className="mb-10 sm:mb-14 max-w-3xl">
             <Eyebrow className="mb-6">How it works</Eyebrow>
-            <MaskHeading lines={["Three steps", <span key="2" className="text-white/50">to lights out.</span>]} className="text-[clamp(1.8rem,3.7vw,3.02rem)] text-white" />
+            <MaskHeading lines={["Three steps", <span key="2" className="text-white/50">to lights out</span>]} className="text-[clamp(1.8rem,3.7vw,3.02rem)] text-white" />
           </div>
           <ol className="grid gap-4 md:grid-cols-3">
             {steps.map(({ Icon, title, body }, i) => (
@@ -130,7 +130,7 @@ export default function EventsPage() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Eyebrow className="mb-6">Booking enquiry</Eyebrow>
-            <MaskHeading lines={["Tell us about", "your event."]} className="text-[clamp(1.8rem,3.36vw,2.69rem)] text-white" />
+            <MaskHeading lines={["Tell us about", "your event"]} className="text-[clamp(1.8rem,3.36vw,2.69rem)] text-white" />
             <Reveal>
               <p className="mt-6 max-w-sm text-[16px] leading-relaxed text-smoke">
                 Share a few details and we&apos;ll come back with availability and a quote. No commitment until you confirm.
@@ -147,7 +147,7 @@ export default function EventsPage() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Eyebrow className="mb-6">FAQ</Eyebrow>
-            <MaskHeading lines={["Questions", "before the grid."]} className="text-[clamp(1.8rem,3.36vw,2.69rem)] text-white" />
+            <MaskHeading lines={["Questions", "before the grid"]} className="text-[clamp(1.8rem,3.36vw,2.69rem)] text-white" />
           </div>
           <Reveal className="lg:col-span-8">
             <Faq items={eventFaqs} />

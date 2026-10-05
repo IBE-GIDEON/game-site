@@ -77,7 +77,7 @@ export default function LiveTiming({ compact = false }: { compact?: boolean }) {
           </span>
           <div className="leading-tight">
             <div className="text-[15px] font-medium text-bone">Open practice</div>
-            <div className="text-[12px] text-ash">Circuit de Barcelona-Catalunya · GT3</div>
+            <div className="text-[12px] text-ash">Barcelona-Catalunya in GT3 cars</div>
           </div>
         </div>
         <div className="flex items-center gap-5 text-[12px] text-smoke">
@@ -202,7 +202,7 @@ export default function LiveTiming({ compact = false }: { compact?: boolean }) {
                       {fmtLap(r.best)}
                     </span>
                     <span className="tabular w-[62px] text-right font-mono text-[12px] text-ash">
-                      {i === 0 ? "Leader" : gap !== null ? `+${gap.toFixed(3)}` : "—"}
+                      {i === 0 ? "Leader" : gap !== null ? `+${gap.toFixed(3)}` : ""}
                     </span>
                   </motion.li>
                 );

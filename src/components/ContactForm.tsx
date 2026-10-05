@@ -72,7 +72,7 @@ export default function ContactForm() {
             </label>
             <div className="pt-2">
               <Button type="submit" size="lg" disabled={state === "sending"}>
-                {state === "sending" ? "Sending…" : "Send message"}
+                {state === "sending" ? "Sending" : "Send message"}
               </Button>
             </div>
           </motion.form>

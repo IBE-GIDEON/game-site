@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
-import { ArrowRight, List, MapPin, Phone, WhatsappLogo, X } from "@phosphor-icons/react";
+import { ArrowRight, List, X } from "@phosphor-icons/react";
+import { MapsIcon, PhoneIcon, WhatsAppIcon } from "./ui/BrandIcons";
 import { useLenis } from "lenis/react";
 import { nav, site } from "@/lib/site";
 import Button from "./ui/Button";
@@ -149,14 +150,14 @@ export default function Nav() {
                 <Button href="/book" size="lg" className="w-full">
                   Book a session
                 </Button>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 pt-2">
                   {[
-                    { href: site.phoneHref, label: "Call", Icon: Phone },
-                    { href: site.whatsapp, label: "WhatsApp", Icon: WhatsappLogo },
+                    { href: site.phoneHref, label: "Call", Icon: PhoneIcon },
+                    { href: site.whatsapp, label: "WhatsApp", Icon: WhatsAppIcon },
                     {
                       href: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapsQuery)}`,
                       label: "Directions",
-                      Icon: MapPin,
+                      Icon: MapsIcon,
                     },
                   ].map(({ href, label, Icon }) => (
                     <a
@@ -164,9 +165,9 @@ export default function Nav() {
                       href={href}
                       target={href.startsWith("http") ? "_blank" : undefined}
                       rel="noreferrer"
-                      className="font-label flex h-[68px] flex-col items-center justify-center gap-1.5 rounded-[2px] border border-white/10 text-[11px] text-bone transition-colors active:bg-white/[0.06]"
+                      className="flex flex-col items-center gap-2 py-2 text-[12px] text-bone transition-opacity active:opacity-60"
                     >
-                      <Icon size={20} className="text-signal" />
+                      <Icon />
                       {label}
                     </a>
                   ))}

@@ -10,7 +10,7 @@ import CtaBand from "@/components/CtaBand";
 import { monthly, site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Live timing & leaderboards",
+  title: "Live timing and leaderboards",
   description: "Live lap times, rig status and the monthly venue leaderboard at Racecraft Sim, Peterborough.",
 };
 
@@ -19,7 +19,7 @@ export default function TimingPage() {
     <>
       <PageHero
         eyebrow="Live timing"
-        title={["The pit wall,", <span key="2" className="text-white/50">in your pocket.</span>]}
+        title={["The pit wall", <span key="2" className="text-white/50">in your pocket</span>]}
         intro="Every lap at Racecraft Sim is captured automatically in real time. Watch the session live, check which rigs are free, then chase the monthly record."
       >
         <div className="flex flex-wrap gap-3">
@@ -44,7 +44,7 @@ export default function TimingPage() {
           <div className="lg:col-span-7">
             <Eyebrow className="mb-6">Monthly leaderboard</Eyebrow>
             <MaskHeading
-              lines={[`${monthly.track}, ${monthly.month}.`, <span key="2" className="text-white/50">The record fell on the 29th.</span>]}
+              lines={[`${monthly.track} ${monthly.month}`, <span key="2" className="text-white/50">The record fell on the 29th</span>]}
               className="text-[clamp(1.8rem,3.86vw,3.19rem)] text-white"
             />
           </div>
@@ -144,7 +144,7 @@ export default function TimingPage() {
             <div className="panel flex flex-col justify-center p-8 sm:p-12">
               <span className="flex items-center gap-2 text-[13px] text-smoke">
                 <Flag size={16} className="text-signal" />
-                Track of the month · September
+                September track of the month
               </span>
               <h2 className="font-display mt-6 text-[clamp(1.8rem,3.36vw,2.86rem)] text-white">Circuit de Barcelona-Catalunya</h2>
               <p className="mt-5 max-w-md text-[16px] leading-relaxed text-smoke">

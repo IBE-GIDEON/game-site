@@ -22,7 +22,7 @@ export const site = {
 export const nav = [
   { href: "/about", label: "The venue" },
   { href: "/timing", label: "Live timing" },
-  { href: "/events", label: "Parties & corporate" },
+  { href: "/events", label: "Parties and corporate" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -86,17 +86,17 @@ export const sessions: Session[] = [
 export const raceNight = {
   price: 30,
   day: "Every Friday",
-  time: "7:00pm – 11:00pm",
+  time: "7pm to 11pm",
   drivers: 16,
   rigs: 8,
   schedule: [
-    { time: "19:00", title: "Check-in & briefing", detail: "Sign in, rules and format explained, rig allocation." },
+    { time: "19:00", title: "Check-in and briefing", detail: "Sign in, rules and format explained, rig allocation." },
     { time: "19:20", title: "Practice", detail: "Two groups, ten minutes each to learn the car and track." },
     { time: "19:40", title: "Hot-lap qualifying", detail: "Fifteen minutes per group. One lap decides your grid." },
-    { time: "20:20", title: "Heat races", detail: "Heat 1 for P1–8, Heat 2 for P9–16." },
+    { time: "20:20", title: "Heat races", detail: "Heat 1 for places 1 to 8 and Heat 2 for places 9 to 16." },
     { time: "21:15", title: "Semi-finals", detail: "Top eight and bottom eight battle for the final grid." },
     { time: "22:05", title: "Grand final", detail: "Top eight drivers, thirty minutes, one podium." },
-    { time: "22:40", title: "Podium & awards", detail: "Trophies, fastest-lap award and photos." },
+    { time: "22:40", title: "Podium and awards", detail: "Trophies, fastest-lap award and photos." },
   ],
   points: [10, 8, 6, 5, 4, 3, 2, 1],
 };
@@ -129,15 +129,15 @@ export const reviews = [
 export const generalFaqs = [
   {
     q: "Where is the closest car park?",
-    a: "Monk Stone House Car Park (PE1 1SA) is the closest and cheapest option, paid through the RingGo app. Roadside parking nearby is available but costs more.",
+    a: "Monk Stone House Car Park at PE1 1SA is the closest and cheapest option, paid through the RingGo app. Roadside parking nearby is available but costs more.",
   },
   {
     q: "What are your opening times?",
-    a: "Wednesday to Saturday 10am – 8pm, Sunday 12pm – 8pm. We're closed on Mondays and Tuesdays.",
+    a: "Wednesday to Saturday 10am to 8pm and Sunday 12pm to 8pm. We're closed on Mondays and Tuesdays.",
   },
   {
     q: "How do I get started?",
-    a: "Book a session online, or get in touch and we'll walk you through it. No experience needed: we set up the rig, the car and the assists around you.",
+    a: "Book a session online, or get in touch and we'll walk you through it. No experience is needed because we set up the rig, the car and the assists around you.",
   },
   {
     q: "How can I contact you?",

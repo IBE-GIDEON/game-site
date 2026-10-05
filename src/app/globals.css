@@ -71,6 +71,10 @@
     background: var(--color-ink);
     color: var(--color-bone);
     font-family: var(--font-sans);
+    font-variation-settings: "wdth" 97;
+    font-feature-settings: "kern" 1, "liga" 1;
+    font-synthesis: none;
+    letter-spacing: 0.004em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -88,26 +92,33 @@
   img {
     user-select: none;
   }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  p, li, blockquote, figcaption {
+    text-wrap: pretty;
+  }
 }
 
 /* Display type follows the logo wordmark: bold, italic, widened capitals. */
 @utility font-display {
   font-family: var(--font-saira), ui-sans-serif, system-ui, sans-serif;
   font-style: italic;
-  font-variation-settings: "wdth" 108;
-  font-weight: 750;
+  font-variation-settings: "wdth" 106;
+  font-weight: 720;
   text-transform: uppercase;
-  letter-spacing: -0.005em;
-  line-height: 0.94;
+  letter-spacing: -0.012em;
+  line-height: 0.95;
+  text-wrap: balance;
 }
 /* Same voice for small UI labels: buttons, nav, eyebrows. */
 @utility font-label {
   font-family: var(--font-saira), ui-sans-serif, system-ui, sans-serif;
   font-style: italic;
-  font-variation-settings: "wdth" 104;
-  font-weight: 650;
+  font-variation-settings: "wdth" 100;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.045em;
+  letter-spacing: 0.06em;
 }
 /* Long display copy (manifesto, quotes) keeps the family but stays readable. */
 @utility font-statement {
@@ -116,8 +127,9 @@
   font-variation-settings: "wdth" 100;
   font-weight: 500;
   text-transform: none;
-  letter-spacing: -0.012em;
-  line-height: 1.16;
+  letter-spacing: -0.01em;
+  line-height: 1.18;
+  text-wrap: pretty;
 }
 /* data type: Saira semi-condensed with fixed-width digits so ticking times never jitter.
    Kept in the base layer so per-element tracking/weight utilities still win. */

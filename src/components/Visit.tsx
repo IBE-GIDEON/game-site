@@ -12,7 +12,7 @@ export default function Visit() {
       <div className="grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <Eyebrow className="mb-6">Visit us</Eyebrow>
-          <MaskHeading lines={["In the heart of", "Peterborough."]} className="text-[clamp(1.98rem,4.2vw,3.53rem)] text-white" />
+          <MaskHeading lines={["In the heart of", "Peterborough"]} className="text-[clamp(1.98rem,4.2vw,3.53rem)] text-white" />
           <Reveal>
             <OpenStatus className="mt-8" />
           </Reveal>
@@ -40,7 +40,7 @@ export default function Visit() {
                     <li key={d} className="flex justify-between text-smoke">
                       <span>{hours[d].day.slice(0, 3)}</span>
                       <span className="tabular font-mono text-[12px] text-bone/80">
-                        {hours[d].open === null ? "Closed" : `${fmt(hours[d].open!)}–${fmt(hours[d].close!)}`}
+                        {hours[d].open === null ? "Closed" : `${fmt(hours[d].open!)} to ${fmt(hours[d].close!)}`}
                       </span>
                     </li>
                   ))}

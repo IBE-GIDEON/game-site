@@ -47,7 +47,7 @@ export default function RaceNight() {
             <div className="lg:sticky lg:top-28">
               <Eyebrow className="mb-6">Friday night tournament</Eyebrow>
               <MaskHeading
-                lines={["Sixteen drivers.", "Four hours.", <span key="3" className="text-signal-bright">One podium.</span>]}
+                lines={["Sixteen drivers", "Four hours", <span key="3" className="text-signal-bright">One podium</span>]}
                 className="text-[clamp(1.98rem,4.2vw,3.53rem)] text-white"
               />
               <Reveal>

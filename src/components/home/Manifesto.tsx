@@ -7,7 +7,7 @@ import CountUp from "@/components/ui/CountUp";
 
 const TEXT_SHORT = "This isn't arcade racing. Identical flagship rigs, maintained like race cars.";
 const TEXT =
-  "This isn't arcade racing. Racecraft Sim was founded by a professional engineer with one goal: an authentic, professional-grade sim racing experience without compromise. Identical flagship rigs, maintained like race cars, in a room that feels closer to a paddock than a games venue.";
+  "This isn't arcade racing. Racecraft Sim was founded by a professional engineer to give you an authentic professional-grade sim racing experience without compromise. Identical flagship rigs, maintained like race cars, in a room that feels closer to a paddock than a games venue.";
 
 function Word({ word, range, progress }: { word: string; range: [number, number]; progress: MotionValue<number> }) {
   const opacity = useTransform(progress, range, [0.14, 1]);

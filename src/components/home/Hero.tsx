@@ -91,7 +91,7 @@ export default function Hero() {
               as="h1"
               play={ready}
               delay={0.15}
-              lines={["Sim racing,", <span key="b" className="text-signal">done properly.</span>]}
+              lines={["Sim racing", <span key="b" className="text-signal">done properly</span>]}
               className="text-[clamp(2.3rem,7.1vw,6.1rem)] text-white"
             />
 
@@ -131,7 +131,7 @@ export default function Hero() {
           >
             <div className="flex items-center justify-between text-[12px] text-ash">
               <span>Monthly leaderboard</span>
-              <span>{monthly.track} · {monthly.month}</span>
+              <span>{monthly.track} {monthly.month}</span>
             </div>
             <div className="mt-4 flex items-end justify-between">
               <div>

@@ -34,7 +34,7 @@ export default function Reviews() {
       <div className="container-x mb-14 flex flex-col justify-between gap-8 md:flex-row md:items-end">
         <div>
           <Eyebrow className="mb-6">From the pit wall</Eyebrow>
-          <MaskHeading lines={["Five stars,", <span key="2" className="text-white/50">lap after lap.</span>]} className="text-[clamp(1.98rem,4.54vw,3.86rem)] text-white" />
+          <MaskHeading lines={["Five stars", <span key="2" className="text-white/50">lap after lap</span>]} className="text-[clamp(1.98rem,4.54vw,3.86rem)] text-white" />
         </div>
         <div className="flex items-center gap-4">
           <div className="text-[13px] text-smoke">

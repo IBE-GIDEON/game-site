@@ -10,7 +10,7 @@ export default function TimingSection() {
           <div className="lg:col-span-7">
             <Eyebrow className="mb-6">Live timing</Eyebrow>
             <MaskHeading
-              lines={["Every lap timed.", <span key="2" className="text-white/50">Every driver ranked.</span>]}
+              lines={["Every lap timed", <span key="2" className="text-white/50">Every driver ranked</span>]}
               className="text-[clamp(1.98rem,4.54vw,3.86rem)] text-white"
             />
           </div>

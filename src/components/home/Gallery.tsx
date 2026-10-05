@@ -8,7 +8,7 @@ import { Eyebrow } from "@/components/ui/Reveal";
 const shots = [
   { src: "/images/venue-start-screens.jpg", caption: "Start your engines", w: "w-[78vw] sm:w-[58vw] lg:w-[46vw]", ratio: "aspect-[4/3]" },
   { src: "/images/venue-driver-window.jpg", caption: "Seat, wheel and pedals set to you", w: "w-[62vw] sm:w-[40vw] lg:w-[28vw]", ratio: "aspect-[3/4]" },
-  { src: "/images/barcelona-long-exposure.jpg", caption: "Track of the month: Barcelona", w: "w-[82vw] sm:w-[60vw] lg:w-[48vw]", ratio: "aspect-[3/2]" },
+  { src: "/images/barcelona-long-exposure.jpg", caption: "Barcelona is this month's track", w: "w-[82vw] sm:w-[60vw] lg:w-[48vw]", ratio: "aspect-[3/2]" },
   { src: "/images/venue-lounge.jpg", caption: "The driver lounge", w: "w-[62vw] sm:w-[40vw] lg:w-[28vw]", ratio: "aspect-[3/4]" },
   { src: "/images/venue-drivers-racing.jpg", caption: "A full grid on race night", w: "w-[78vw] sm:w-[58vw] lg:w-[46vw]", ratio: "aspect-[4/3]" },
   { src: "/images/venue-rig-window.jpg", caption: "Eight identical rigs", w: "w-[62vw] sm:w-[40vw] lg:w-[28vw]", ratio: "aspect-[3/4]" },

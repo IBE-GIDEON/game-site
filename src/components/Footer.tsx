@@ -74,7 +74,7 @@ export default function Footer() {
                 <li key={d} className="flex justify-between gap-4 text-smoke">
                   <span>{hours[d].day.slice(0, 3)}</span>
                   <span className="tabular font-mono text-[13px]">
-                    {hours[d].open === null ? "Closed" : `${fmt(hours[d].open!)} – ${fmt(hours[d].close!)}`}
+                    {hours[d].open === null ? "Closed" : `${fmt(hours[d].open!)} to ${fmt(hours[d].close!)}`}
                   </span>
                 </li>
               ))}
@@ -92,10 +92,11 @@ export default function Footer() {
 
       <div className="border-t border-white/[0.07]">
         <div className="container-x flex flex-col justify-between gap-2 py-6 text-[12px] text-ash sm:flex-row">
-          <span>
-            © {new Date().getFullYear()} {site.legal} · Company no. {site.companyNo}
+          <span className="flex flex-wrap gap-x-6 gap-y-1">
+            <span>© {new Date().getFullYear()} {site.legal}</span>
+            <span>Company number {site.companyNo}</span>
           </span>
-          <span>Opened {site.opened} · Peterborough, UK</span>
+          <span>Opened {site.opened} in Peterborough</span>
         </div>
       </div>
     </footer>

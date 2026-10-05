@@ -29,7 +29,7 @@ const principles = [
 const audiences = [
   { Icon: Flag, title: "Sim racing enthusiasts", body: "Chasing lap time on hardware you can't fit at home." },
   { Icon: SteeringWheel, title: "Motorsport fans", body: "Drive the circuits you watch every race weekend." },
-  { Icon: UsersThree, title: "Friends & groups", body: "Head-to-head racing with a live leaderboard." },
+  { Icon: UsersThree, title: "Friends and groups", body: "Head-to-head racing with a live leaderboard." },
   { Icon: Briefcase, title: "Corporate teams", body: "Team building and client events that stand out." },
 ];
 
@@ -38,8 +38,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="The venue"
-        title={["Created for people who", <span key="2" className="text-white/50">care how driving feels.</span>]}
-        intro="A premium racing simulation centre in Peterborough, built from the ground up with one goal: an authentic, professional-grade sim racing experience, without compromise."
+        title={["Created for people who", <span key="2" className="text-white/50">care how driving feels</span>]}
+        intro="A premium racing simulation centre in Peterborough, built from the ground up to give you an authentic professional-grade sim racing experience without compromise."
         image="/images/venue-floor-wide.jpg"
         imageAlt="The Racecraft Sim venue floor with rows of rigs"
       />
@@ -48,7 +48,7 @@ export default function AboutPage() {
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <Eyebrow className="mb-6">Our story</Eyebrow>
-            <MaskHeading lines={["Built by engineers.", <span key="2" className="text-white/50">Designed for drivers.</span>]} className="text-[clamp(1.8rem,3.7vw,3.02rem)] text-white" />
+            <MaskHeading lines={["Built by engineers", <span key="2" className="text-white/50">Designed for drivers</span>]} className="text-[clamp(1.8rem,3.7vw,3.02rem)] text-white" />
             <Reveal>
               <div className="mt-8 space-y-5 text-[16px] leading-relaxed text-smoke">
                 <p>
@@ -107,7 +107,7 @@ export default function AboutPage() {
         <div className="container-x grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Eyebrow className="mb-6">Quality before quantity</Eyebrow>
-            <MaskHeading lines={["A premium experience,", <span key="2" className="text-white/50">not a gimmick.</span>]} className="text-[clamp(1.8rem,3.7vw,3.02rem)] text-white" />
+            <MaskHeading lines={["A premium experience", <span key="2" className="text-white/50">not a gimmick</span>]} className="text-[clamp(1.8rem,3.7vw,3.02rem)] text-white" />
             <Reveal>
               <p className="mt-8 max-w-md text-[16px] leading-relaxed text-smoke">
                 We run a small number of identical, flagship rigs so every driver gets the same high standard. There are no
@@ -132,7 +132,7 @@ export default function AboutPage() {
       <section className="container-x py-16 sm:py-32">
         <div className="mb-10 sm:mb-12 max-w-3xl">
           <Eyebrow className="mb-6">Who it&apos;s for</Eyebrow>
-          <MaskHeading lines={["Closer to a paddock", <span key="2" className="text-white/50">than a gaming venue.</span>]} className="text-[clamp(1.8rem,3.7vw,3.02rem)] text-white" />
+          <MaskHeading lines={["Closer to a paddock", <span key="2" className="text-white/50">than a gaming venue</span>]} className="text-[clamp(1.8rem,3.7vw,3.02rem)] text-white" />
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {audiences.map(({ Icon, title, body }, i) => (

@@ -4,7 +4,7 @@ import Button from "@/components/ui/Button";
 import { site } from "@/lib/site";
 
 export default function CtaBand({
-  title = ["Your grid slot", "is waiting."],
+  title = ["Your grid slot", "is waiting"],
   body = "Sessions from £15. Wednesday to Sunday in central Peterborough. Walk-ins welcome when rigs are free.",
   image = "/images/barcelona-long-exposure.jpg",
 }: {

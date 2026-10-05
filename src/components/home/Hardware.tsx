@@ -91,7 +91,7 @@ export default function Hardware() {
         <div className="lg:col-span-7">
           <Eyebrow className="mb-6">The hardware</Eyebrow>
           <MaskHeading
-            lines={["Built by engineers.", <span key="2" className="text-white/50">Designed for drivers.</span>]}
+            lines={["Built by engineers", <span key="2" className="text-white/50">Designed for drivers</span>]}
             className="text-[clamp(1.98rem,4.54vw,3.86rem)] text-white"
           />
         </div>
@@ -163,7 +163,7 @@ export default function Hardware() {
             src="/images/race-cockpit.jpg"
             alt="Inside a stripped-out race car cockpit"
             Icon={Vibrate}
-            title="Motion & VR"
+            title="Motion and VR"
             body="Our premium motion rig moves under braking, cornering and kerb strikes. Add VR for full immersion."
             spec="From £35"
             className="h-full"

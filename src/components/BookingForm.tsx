@@ -247,7 +247,7 @@ export default function BookingForm() {
             })}
           </div>
         ) : (
-          <p className="flex h-10 items-center text-[13px] text-smoke">{date ? "Nothing free that day. Try another." : "Loading times…"}</p>
+          <p className="flex h-10 items-center text-[13px] text-smoke">{date ? "Nothing free that day. Try another." : "Loading times"}</p>
         )}
       </div>
 
