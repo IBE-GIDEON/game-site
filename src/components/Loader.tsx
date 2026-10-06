@@ -59,8 +59,6 @@ export default function Loader() {
                 </div>
               ))}
             </div>
-
-            <div className="rc-go mt-6 font-mono text-[11px] tracking-[0.2em] text-bone">LIGHTS OUT</div>
           </div>
         </motion.div>
       )}

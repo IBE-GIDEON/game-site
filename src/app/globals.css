@@ -46,9 +46,6 @@
   from { opacity: 0; transform: scale(0.96); }
   to { opacity: 1; transform: none; }
 }
-@keyframes rc-show {
-  to { opacity: 1; }
-}
 .rc-light {
   background-color: #1d1d22;
   animation:
@@ -59,7 +56,6 @@
 /* failsafe: never trap the visitor behind the loader if scripts are slow or blocked */
 @keyframes rc-failsafe { to { opacity: 0; visibility: hidden; } }
 .rc-loader { animation: rc-failsafe 0.6s ease 4.5s forwards; }
-.rc-go { opacity: 0; animation: rc-show 0.2s ease-out 1.6s forwards; }
 
 @layer base {
   html {
