@@ -18,7 +18,7 @@ export default function CtaBand({
         <div className="absolute inset-0 -z-10">
           <ParallaxImage src={image} alt="" className="h-full w-full" sizes="100vw" strength={12} />
         </div>
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(100deg,rgb(8_8_10/0.92)_20%,rgb(8_8_10/0.55)_60%,rgb(8_8_10/0.2))]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(100deg,rgb(0_0_0/0.92)_20%,rgb(0_0_0/0.55)_60%,rgb(0_0_0/0.2))]" />
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_80%_at_0%_100%,rgb(227_16_28/0.25),transparent_60%)]" />
         <div className="px-6 py-14 sm:px-12 sm:py-28 lg:px-16 lg:py-32">
           <MaskHeading lines={title} className="max-w-3xl text-[clamp(2.16rem,5.38vw,4.7rem)] text-white" />

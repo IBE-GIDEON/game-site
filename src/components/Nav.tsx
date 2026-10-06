@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import { BookLabel } from "@/components/ui/Tyre";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
-import { ArrowRight, List, X } from "@phosphor-icons/react";
+import { List, X } from "@phosphor-icons/react";
 import { MapsIcon, PhoneIcon, WhatsAppIcon } from "./ui/BrandIcons";
 import { useLenis } from "lenis/react";
 import { nav, site } from "@/lib/site";
@@ -89,7 +90,7 @@ export default function Nav() {
             <div className="flex items-center gap-3">
               <div className="hidden sm:block">
                 <Button href="/book" size="md" icon={false}>
-                  Book a session
+                  <BookLabel hub="#000" />
                 </Button>
               </div>
               <button
@@ -134,7 +135,6 @@ export default function Nav() {
                           <span className={clsx("h-5 w-[3px]", active ? "bg-signal" : "bg-white/10")} />
                           <span className={clsx("font-display text-[22px]", active ? "text-white" : "text-bone/80")}>{item.label}</span>
                         </span>
-                        <ArrowRight size={18} className="text-ash transition-transform group-active:translate-x-1" />
                       </Link>
                     </motion.li>
                   );
@@ -148,7 +148,7 @@ export default function Nav() {
                 className="mt-auto space-y-3 pt-10"
               >
                 <Button href="/book" size="lg" className="w-full" icon={false}>
-                  Book a session
+                  <BookLabel hub="#000" />
                 </Button>
                 <div className="grid grid-cols-3 pt-2">
                   {[

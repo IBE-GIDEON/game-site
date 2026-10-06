@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "motion/react";
+import { BookLabel } from "@/components/ui/Tyre";
 import { useEffect, useRef } from "react";
 import { Timer, Trophy } from "@phosphor-icons/react";
 import { MaskHeading } from "@/components/ui/Reveal";
@@ -12,8 +13,10 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 /**
  * Venue reel (cut from the client's promo, watermark cropped, muted).
- * Restarts from the first frame when the loader lifts, pauses off-screen,
- * and stays on the poster frame for reduced-motion visitors.
+ * Always autoplays, restarts when the loader lifts and pauses off-screen.
+ * Phones in power-saving mode block autoplay for every site; there the native
+ * play button is hidden (see .hero-video in globals.css), the poster frame shows,
+ * and the reel starts on the visitor's first touch anywhere on the page.
  */
 function HeroVideo({ ready }: { ready: boolean }) {
   const ref = useRef<HTMLVideoElement>(null);
@@ -21,21 +24,48 @@ function HeroVideo({ ready }: { ready: boolean }) {
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      v.pause();
-      return;
-    }
+    // belt and braces for mobile Safari: muted must be a property and an attribute
+    v.muted = true;
+    v.defaultMuted = true;
+    v.setAttribute("muted", "");
+    v.setAttribute("playsinline", "");
+    v.setAttribute("webkit-playsinline", "");
+
+    let visible = true;
+    const tryPlay = () => {
+      if (visible) v.play().catch(() => {});
+    };
     const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) v.play().catch(() => {});
+      visible = entry.isIntersecting;
+      if (visible) tryPlay();
       else v.pause();
     });
     io.observe(v);
-    return () => io.disconnect();
+
+    // if autoplay was refused, the first touch or tap counts as permission
+    const onGesture = () => {
+      tryPlay();
+      if (!v.paused) removeGesture();
+    };
+    const events = ["touchstart", "pointerdown", "click", "keydown"] as const;
+    const removeGesture = () => events.forEach((e) => window.removeEventListener(e, onGesture));
+    events.forEach((e) => window.addEventListener(e, onGesture, { passive: true }));
+
+    // resume after the tab or app comes back to the foreground
+    const onVisible = () => document.visibilityState === "visible" && tryPlay();
+    document.addEventListener("visibilitychange", onVisible);
+
+    tryPlay();
+    return () => {
+      io.disconnect();
+      removeGesture();
+      document.removeEventListener("visibilitychange", onVisible);
+    };
   }, []);
 
   useEffect(() => {
     const v = ref.current;
-    if (!ready || !v || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!ready || !v) return;
     v.currentTime = 0;
     v.play().catch(() => {});
   }, [ready]);
@@ -43,13 +73,16 @@ function HeroVideo({ ready }: { ready: boolean }) {
   return (
     <video
       ref={ref}
-      className="absolute inset-0 h-full w-full object-cover object-[50%_40%]"
+      className="hero-video absolute inset-0 h-full w-full object-cover object-[50%_40%]"
       poster="/video/hero-poster.jpg"
       autoPlay
       muted
       loop
       playsInline
       preload="auto"
+      controls={false}
+      disablePictureInPicture
+      disableRemotePlayback
       aria-label="Drivers racing on Racecraft Sim rigs in Peterborough"
     >
       <source src="/video/hero-mobile.mp4" type="video/mp4" media="(max-width: 767px)" />
@@ -81,8 +114,8 @@ export default function Hero() {
 
       {/* grade: hold the type over moving footage without killing the picture */}
       <div className="absolute inset-0 bg-ink/25" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(8_8_10/0.75)_0%,rgb(8_8_10/0.3)_28%,rgb(8_8_10/0.8)_66%,#08080a_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(110%_90%_at_0%_100%,rgb(8_8_10/0.92),transparent_65%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(0_0_0/0.75)_0%,rgb(0_0_0/0.3)_28%,rgb(0_0_0/0.8)_66%,#000000_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(110%_90%_at_0%_100%,rgb(0_0_0/0.92),transparent_65%)]" />
 
       <motion.div style={{ opacity: fade }} className="container-x relative z-10 pb-10 sm:pb-14 lg:pb-16">
         <div className="grid items-end gap-10 lg:grid-cols-12">
@@ -115,7 +148,7 @@ export default function Hero() {
               className="mt-8 grid gap-3 sm:mt-9 sm:flex sm:flex-wrap"
             >
               <Button href="/book" size="lg" icon={false}>
-                Book a session
+                <BookLabel hub="#000" />
               </Button>
               <Button href="/timing" variant="outline" size="lg" icon={false}>
                 Watch live timing

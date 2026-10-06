@@ -47,8 +47,8 @@ export default function PageHero({
               <Image src={image} alt={imageAlt} fill preload quality={85} sizes="100vw" className="object-cover" />
             </motion.div>
           </motion.div>
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(8_8_10/0.7),rgb(8_8_10/0.45)_40%,#08080a_100%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(90%_80%_at_0%_100%,rgb(8_8_10/0.85),transparent_60%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(0_0_0/0.7),rgb(0_0_0/0.45)_40%,#000000_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(90%_80%_at_0%_100%,rgb(0_0_0/0.85),transparent_60%)]" />
         </>
       )}
       {!image && (

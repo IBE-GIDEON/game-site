@@ -94,7 +94,7 @@ const TrackMap = forwardRef<TrackMapHandle, { rows: RowState[] }>(function Track
           style={{ opacity: 0, transition: "opacity .6s" }}
         >
           <circle r="9" fill={r.def.color} opacity="0.18" />
-          <circle r="6.5" fill={r.def.color} stroke="#08080a" strokeWidth="1.5" filter={r.def.id === "ryan" ? "url(#glow)" : undefined} />
+          <circle r="6.5" fill={r.def.color} stroke="#000000" strokeWidth="1.5" filter={r.def.id === "ryan" ? "url(#glow)" : undefined} />
           <text
             ref={(el) => {
               labels.current[r.def.id] = el;
@@ -104,7 +104,7 @@ const TrackMap = forwardRef<TrackMapHandle, { rows: RowState[] }>(function Track
             fontSize="7"
             fontWeight="700"
             className="font-mono"
-            fill="#08080a"
+            fill="#000000"
           />
         </g>
       ))}
