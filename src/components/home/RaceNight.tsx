@@ -80,7 +80,7 @@ export default function RaceNight() {
               </Reveal>
               <Reveal delay={0.15} className="mt-6 grid gap-3 sm:flex sm:flex-wrap">
                 <Button href={site.bookingUrl} icon={false}>Enter Friday&apos;s race</Button>
-                <Button href="/timing" variant="outline" className="max-sm:hidden">
+                <Button href="/timing" variant="outline" className="max-sm:hidden" icon={false}>
                   See the leaderboard
                 </Button>
               </Reveal>
