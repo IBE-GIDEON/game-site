@@ -71,3 +71,65 @@ export function UltrawideIcon({ size = 32, className }: P) {
     </svg>
   );
 }
+
+/** Racing helmet, side view, visor facing right. */
+export function HelmetIcon({ size = 32, className }: P) {
+  return (
+    <svg {...base(size, className)}>
+      <path d="M4.5 20.5C4.5 13 10 7.5 17 7.5c6 0 10.5 4.5 10.5 10.5v3a2 2 0 0 1-2 2H13l-2.5 2.5H6a1.5 1.5 0 0 1-1.5-1.5z" />
+      <path d="M14.5 13.5h12.6" />
+      <path d="M14.5 13.5v5h13" />
+      <path d="M7.5 17.5c1.8-4.5 5-7 9-7.5" />
+    </svg>
+  );
+}
+
+/** Chequered flag on a pole. */
+export function ChequeredFlagIcon({ size = 32, className }: P) {
+  const flag = "M7.5 6c3-1.6 6 1.6 9 0s6-1.6 9 0v11c-3-1.6-6-1.6-9 0s-6 1.6-9 0z";
+  return (
+    <svg {...base(size, className)}>
+      <defs>
+        <clipPath id="kit-flag">
+          <path d={flag} />
+        </clipPath>
+      </defs>
+      <g clipPath="url(#kit-flag)" fill="currentColor" stroke="none">
+        {[0, 1, 2, 3].flatMap((col) =>
+          [0, 1, 2].map((row) =>
+            (col + row) % 2 === 0 ? <rect key={`${col}-${row}`} x={7.5 + col * 4.5} y={4 + row * 4.5} width="4.5" height="4.5" /> : null,
+          ),
+        )}
+      </g>
+      <path d={flag} />
+      <path d="M7.5 5v22.5" />
+    </svg>
+  );
+}
+
+/** Three people: a group racing together. */
+export function GroupIcon({ size = 32, className }: P) {
+  return (
+    <svg {...base(size, className)}>
+      <circle cx="16" cy="11" r="3.6" />
+      <path d="M9.5 25.5a6.5 6.5 0 0 1 13 0" />
+      <circle cx="7.5" cy="13.5" r="2.7" />
+      <path d="M3 24a4.8 4.8 0 0 1 6.6-4.4" />
+      <circle cx="24.5" cy="13.5" r="2.7" />
+      <path d="M29 24a4.8 4.8 0 0 0-6.6-4.4" />
+    </svg>
+  );
+}
+
+/** 1-2-3 podium with a star over the winner's step. */
+export function PodiumIcon({ size = 32, className }: P) {
+  return (
+    <svg {...base(size, className)}>
+      <path d="M3 26.5h26" />
+      <path d="M12 26.5V14h8v12.5" />
+      <path d="M4.5 26.5V18.5H12" />
+      <path d="M20 21h7.5v5.5" />
+      <path d="M16 5.5l1.3 2.6 2.9.4-2.1 2 .5 2.9-2.6-1.4-2.6 1.4.5-2.9-2.1-2 2.9-.4z" />
+    </svg>
+  );
+}

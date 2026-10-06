@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { SteeringWheel, Briefcase, Flag, UsersThree, Wrench, Sparkle, ShieldCheck, Target } from "@phosphor-icons/react/dist/ssr";
-import { CockpitIcon, PedalsIcon, UltrawideIcon, WheelIcon } from "@/components/ui/KitIcons";
+import { Wrench, Sparkle, ShieldCheck, Target } from "@phosphor-icons/react/dist/ssr";
+import { ChequeredFlagIcon, CockpitIcon, GroupIcon, HelmetIcon, PedalsIcon, PodiumIcon, UltrawideIcon, WheelIcon } from "@/components/ui/KitIcons";
 import PageHero from "@/components/PageHero";
 import ParallaxImage from "@/components/ui/ParallaxImage";
 import { Eyebrow, MaskHeading, Reveal } from "@/components/ui/Reveal";
@@ -28,10 +28,10 @@ const principles = [
 ];
 
 const audiences = [
-  { Icon: Flag, title: "Sim racing enthusiasts", body: "Chasing lap time on hardware you can't fit at home." },
-  { Icon: SteeringWheel, title: "Motorsport fans", body: "Drive the circuits you watch every race weekend." },
-  { Icon: UsersThree, title: "Friends and groups", body: "Head-to-head racing with a live leaderboard." },
-  { Icon: Briefcase, title: "Corporate teams", body: "Team building and client events that stand out." },
+  { Icon: HelmetIcon, title: "Sim racing enthusiasts", body: "Chasing lap time on hardware you can't fit at home." },
+  { Icon: ChequeredFlagIcon, title: "Motorsport fans", body: "Drive the circuits you watch every race weekend." },
+  { Icon: GroupIcon, title: "Friends and groups", body: "Head-to-head racing with a live leaderboard." },
+  { Icon: PodiumIcon, title: "Corporate teams", body: "Team building and client events that stand out." },
 ];
 
 export default function AboutPage() {
@@ -134,14 +134,12 @@ export default function AboutPage() {
           <Eyebrow className="mb-6">Who it&apos;s for</Eyebrow>
           <MaskHeading lines={["Closer to a paddock", <span key="2" className="text-white/50">than a gaming venue</span>]} className="text-[clamp(1.8rem,3.7vw,3.02rem)] text-white" />
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {audiences.map(({ Icon, title, body }, i) => (
             <Reveal key={title} delay={i * 0.06}>
-              <div className="panel group h-full p-7 transition-colors duration-500 hover:border-signal/30">
-                <span className="grid size-12 place-items-center rounded-[2px] bg-signal/10 text-signal-bright ring-1 ring-signal/20 transition-colors duration-500 group-hover:bg-signal group-hover:text-white">
-                  <Icon size={22} />
-                </span>
-                <h3 className="mt-10 text-[17px] font-medium text-white">{title}</h3>
+              <div className="h-full">
+                <Icon size={36} className="text-white" />
+                <h3 className="mt-6 text-[17px] font-medium text-white">{title}</h3>
                 <p className="mt-2 text-[14px] leading-relaxed text-smoke">{body}</p>
               </div>
             </Reveal>

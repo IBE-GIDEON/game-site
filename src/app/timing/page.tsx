@@ -18,13 +18,12 @@ export default function TimingPage() {
   return (
     <>
       <PageHero
-        eyebrow="Live timing"
         title={["The pit wall", <span key="2" className="text-white/50">in your pocket</span>]}
         intro="Every lap at Racecraft Sim is captured automatically in real time. Watch the session live, check which rigs are free, then chase the monthly record."
       >
         <div className="flex flex-wrap gap-3">
-          <Button href={site.driverPortal}>Open my driver data</Button>
-          <Button href="/book" variant="outline">
+          <Button href={site.driverPortal} icon={false}>Open my driver data</Button>
+          <Button href="/book" variant="outline" icon={false}>
             Book a rig
           </Button>
         </div>
@@ -152,7 +151,7 @@ export default function TimingPage() {
                 can be the fastest in September.
               </p>
               <div className="mt-9">
-                <Button href="/book">Take on Barcelona</Button>
+                <Button href="/book" icon={false}>Take on Barcelona</Button>
               </div>
             </div>
           </div>
