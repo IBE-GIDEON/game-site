@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Cube, Gauge, Monitor, SteeringWheel, Briefcase, Flag, UsersThree, Wrench, Sparkle, ShieldCheck, Target } from "@phosphor-icons/react/dist/ssr";
+import { SteeringWheel, Briefcase, Flag, UsersThree, Wrench, Sparkle, ShieldCheck, Target } from "@phosphor-icons/react/dist/ssr";
+import { CockpitIcon, PedalsIcon, UltrawideIcon, WheelIcon } from "@/components/ui/KitIcons";
 import PageHero from "@/components/PageHero";
 import ParallaxImage from "@/components/ui/ParallaxImage";
 import { Eyebrow, MaskHeading, Reveal } from "@/components/ui/Reveal";
@@ -13,10 +14,10 @@ export const metadata: Metadata = {
 };
 
 const kit = [
-  { Icon: SteeringWheel, title: "Direct-drive steering", body: "Instant, detailed force feedback straight from the wheelbase motor." },
-  { Icon: Gauge, title: "Load-cell braking", body: "Brake by pressure, so muscle memory transfers to a real car." },
-  { Icon: Cube, title: "Rigid aluminium cockpits", body: "No flex, no wobble, no wasted input." },
-  { Icon: Monitor, title: "Ultrawide racing displays", body: "A wide field of view for judging apexes and gaps." },
+  { Icon: WheelIcon, title: "Direct-drive steering", body: "Instant, detailed force feedback straight from the wheelbase motor." },
+  { Icon: PedalsIcon, title: "Load-cell braking", body: "Brake by pressure, so muscle memory transfers to a real car." },
+  { Icon: CockpitIcon, title: "Rigid aluminium cockpits", body: "No flex, no wobble, no wasted input." },
+  { Icon: UltrawideIcon, title: "Ultrawide racing displays", body: "A wide field of view for judging apexes and gaps." },
 ];
 
 const principles = [
@@ -91,11 +92,11 @@ export default function AboutPage() {
         <Reveal>
           <h2 className="mb-8 text-[13px] text-ash">The same class of equipment trusted by serious sim racers and professional drivers</h2>
         </Reveal>
-        <div className="grid gap-px overflow-hidden border border-white/[0.07] bg-white/[0.07] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {kit.map(({ Icon, title, body }, i) => (
-            <Reveal key={title} delay={i * 0.06} className="bg-ink p-7 sm:p-8">
-              <Icon size={26} className="text-signal" />
-              <h3 className="mt-10 text-[18px] font-medium text-white">{title}</h3>
+            <Reveal key={title} delay={i * 0.06}>
+              <Icon size={36} className="text-white" />
+              <h3 className="mt-6 text-[18px] font-medium text-white">{title}</h3>
               <p className="mt-2 text-[14px] leading-relaxed text-smoke">{body}</p>
             </Reveal>
           ))}
