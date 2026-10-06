@@ -1,8 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "motion/react";
-import { useEffect, useRef, useState } from "react";
-import { preload } from "react-dom";
+import { useEffect, useRef } from "react";
 import { Timer, Trophy } from "@phosphor-icons/react";
 import { MaskHeading } from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
@@ -13,48 +12,37 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 /**
  * Venue reel (cut from the client's promo, watermark cropped, muted).
- * The file is attached only once the browser is idle after hydration, so it never
- * competes with the page's code and fonts; the poster frame covers the gap.
- * Restarts when the loader lifts, pauses off-screen, and stays on the poster
- * for reduced-motion visitors.
+ * Restarts from the first frame when the loader lifts, pauses off-screen,
+ * and stays on the poster frame for reduced-motion visitors.
  */
 function HeroVideo({ ready }: { ready: boolean }) {
   const ref = useRef<HTMLVideoElement>(null);
-  const [src, setSrc] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const pick = () => setSrc(window.matchMedia("(max-width: 767px)").matches ? "/video/hero-mobile.mp4" : "/video/hero.mp4");
-    if ("requestIdleCallback" in window) {
-      const id = window.requestIdleCallback(pick, { timeout: 1200 });
-      return () => window.cancelIdleCallback(id);
-    }
-    const t = setTimeout(pick, 300);
-    return () => clearTimeout(t);
-  }, []);
 
   useEffect(() => {
     const v = ref.current;
-    if (!v || !src) return;
+    if (!v) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      v.pause();
+      return;
+    }
     const io = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) v.play().catch(() => {});
       else v.pause();
     });
     io.observe(v);
     return () => io.disconnect();
-  }, [src]);
+  }, []);
 
   useEffect(() => {
     const v = ref.current;
-    if (!ready || !v || !src) return;
+    if (!ready || !v || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     v.currentTime = 0;
     v.play().catch(() => {});
-  }, [ready, src]);
+  }, [ready]);
 
   return (
     <video
       ref={ref}
-      src={src ?? undefined}
       className="absolute inset-0 h-full w-full object-cover object-[50%_40%]"
       poster="/video/hero-poster.jpg"
       autoPlay
@@ -63,13 +51,14 @@ function HeroVideo({ ready }: { ready: boolean }) {
       playsInline
       preload="auto"
       aria-label="Drivers racing on Racecraft Sim rigs in Peterborough"
-    />
+    >
+      <source src="/video/hero-mobile.mp4" type="video/mp4" media="(max-width: 767px)" />
+      <source src="/video/hero.mp4" type="video/mp4" />
+    </video>
   );
 }
 
 export default function Hero() {
-  // the poster is the first thing painted under the loader: fetch it early
-  preload("/video/hero-poster.jpg", { as: "image", fetchPriority: "high" });
   const ready = useReady();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
