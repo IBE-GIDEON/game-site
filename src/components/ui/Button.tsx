@@ -37,7 +37,7 @@ export default function Button({
   children,
   variant = "signal",
   size = "md",
-  icon = true,
+  icon = false,
   className,
   external,
   ...rest

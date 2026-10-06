@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
-import { ArrowRight, CaretLeft, CaretRight, Minus, Plus } from "@phosphor-icons/react";
+import { CaretLeft, CaretRight, Minus, Plus } from "@phosphor-icons/react";
 import { hours, raceNight, sessions, site } from "@/lib/site";
 import Tyre from "@/components/ui/Tyre";
 
@@ -301,10 +301,7 @@ export default function BookingForm() {
               "Pick a time"
             )}
           </span>
-          <span className="flex items-center gap-3">
-            <span className="font-mono text-[16px] normal-case not-italic">£{exp.price * drivers}</span>
-            <ArrowRight size={15} weight="bold" className="transition-transform group-hover:translate-x-0.5" />
-          </span>
+          <span className="font-mono text-[16px] normal-case not-italic">£{exp.price * drivers}</span>
         </a>
       </div>
 

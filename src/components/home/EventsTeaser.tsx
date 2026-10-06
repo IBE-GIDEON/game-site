@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Briefcase, Cake } from "@phosphor-icons/react/dist/ssr";
+import { Briefcase, Cake } from "@phosphor-icons/react/dist/ssr";
 import { Eyebrow, MaskHeading, Reveal } from "@/components/ui/Reveal";
 
 const cards = [
@@ -61,9 +61,6 @@ export default function EventsTeaser() {
                   <h3 className="font-display text-[clamp(1.62rem,2.52vw,2.18rem)] text-white">{c.title}</h3>
                   <p className="mt-3 hidden max-w-md text-[15px] leading-relaxed text-smoke sm:block">{c.body}</p>
                 </div>
-                <span className="grid size-12 shrink-0 place-items-center border border-white/25 transition-colors duration-300 group-hover:border-signal group-hover:bg-signal">
-                  <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-0.5" />
-                </span>
               </div>
             </Link>
           </Reveal>

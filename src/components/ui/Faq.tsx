@@ -24,11 +24,11 @@ export default function Faq({ items }: { items: { q: string; a: string }[] }) {
               </span>
               <span
                 className={clsx(
-                  "grid size-9 shrink-0 place-items-center rounded-[2px] border transition-all duration-500",
-                  isOpen ? "rotate-45 border-signal/50 bg-signal/15 text-signal-bright" : "border-white/10 text-smoke group-hover:border-white/25",
+                  "grid size-9 shrink-0 place-items-center transition-[transform,color] duration-500",
+                  isOpen ? "rotate-45 text-white" : "text-smoke group-hover:text-white",
                 )}
               >
-                <Plus size={16} />
+                <Plus size={20} weight="bold" />
               </span>
             </button>
             <AnimatePresence initial={false}>
