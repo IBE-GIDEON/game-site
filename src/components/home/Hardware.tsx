@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import { motion, useInView } from "motion/react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
-import { Cube, Gauge, Monitor, SteeringWheel, Vibrate } from "@phosphor-icons/react";
+import { ArrowLeft, ArrowRight, Cube, Gauge, Monitor, SteeringWheel, Vibrate } from "@phosphor-icons/react";
 import { Eyebrow, MaskHeading, Reveal } from "@/components/ui/Reveal";
 import type { Icon } from "@phosphor-icons/react";
 
@@ -84,7 +84,47 @@ function BrakeTrace() {
   );
 }
 
+const SLIDES = 5;
+
 export default function Hardware() {
+  // Phones get a one-card-at-a-time carousel that advances on its own;
+  // tablets and desktop keep the grid.
+  const track = useRef<HTMLDivElement>(null);
+  const [index, setIndex] = useState(0);
+  const holdUntil = useRef(0);
+
+  const go = (i: number) => {
+    const el = track.current;
+    if (!el) return;
+    const n = (i + SLIDES) % SLIDES;
+    el.scrollTo({ left: n * el.clientWidth, behavior: "smooth" });
+  };
+  const hold = () => {
+    holdUntil.current = Date.now() + 8000;
+  };
+
+  useEffect(() => {
+    const el = track.current;
+    if (!el) return;
+    const phone = window.matchMedia("(max-width: 767px)");
+    let visible = false;
+    const io = new IntersectionObserver(([e]) => (visible = e.isIntersecting), { threshold: 0.4 });
+    io.observe(el);
+    const id = window.setInterval(() => {
+      if (!phone.matches || !visible || document.hidden || Date.now() < holdUntil.current) return;
+      go(Math.round(el.scrollLeft / el.clientWidth) + 1);
+    }, 4000);
+    return () => {
+      window.clearInterval(id);
+      io.disconnect();
+    };
+  }, []);
+
+  const onScroll = () => {
+    const el = track.current;
+    if (el) setIndex(Math.round(el.scrollLeft / el.clientWidth));
+  };
+
   return (
     <section className="container-x pb-20 sm:pb-36">
       <div className="mb-10 sm:mb-14 grid gap-8 lg:grid-cols-12 lg:items-end">
@@ -103,8 +143,16 @@ export default function Hardware() {
         </Reveal>
       </div>
 
-      <div className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 sm:-mx-7 sm:px-7 md:mx-0 md:grid md:auto-rows-[minmax(260px,auto)] md:grid-cols-6 md:gap-4 md:overflow-visible md:px-0 lg:auto-rows-[300px]">
-        <Reveal className="h-[400px] w-[80vw] shrink-0 snap-start sm:w-[60vw] md:h-auto md:w-auto md:col-span-6 lg:col-span-4 lg:row-span-2">
+      <Reveal>
+      <div
+        ref={track}
+        onScroll={onScroll}
+        onPointerDown={hold}
+        onTouchStart={hold}
+        className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain md:grid md:auto-rows-[minmax(260px,auto)] md:grid-cols-6 md:gap-4 md:overflow-visible lg:auto-rows-[300px]"
+        aria-roledescription="carousel"
+      >
+        <div className="h-[420px] w-full shrink-0 snap-center md:h-auto md:w-auto md:col-span-6 lg:col-span-4 lg:row-span-2">
           <PhotoCard
             src="/images/venue-rig-closeup.jpg"
             alt="Drivers on Racecraft Sim direct-drive rigs during a session"
@@ -115,9 +163,9 @@ export default function Hardware() {
             className="h-full md:min-h-[420px]"
             sizes="(min-width: 1024px) 66vw, 100vw"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={0.08} className="h-[400px] w-[80vw] shrink-0 snap-start sm:w-[60vw] md:h-auto md:w-auto md:col-span-3 lg:col-span-2">
+        <div className="h-[420px] w-full shrink-0 snap-center md:h-auto md:w-auto md:col-span-3 lg:col-span-2">
           <div className="panel flex h-full flex-col justify-between p-6 sm:p-8">
             <div className="flex items-start justify-between">
               <span className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.12em] text-bone/80">
@@ -132,9 +180,9 @@ export default function Hardware() {
               <p className="mt-2 text-[14px] leading-relaxed text-smoke">Brake by pressure, not pedal travel, exactly like a race car.</p>
             </div>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={0.12} className="h-[400px] w-[80vw] shrink-0 snap-start sm:w-[60vw] md:h-auto md:w-auto md:col-span-3 lg:col-span-2">
+        <div className="h-[420px] w-full shrink-0 snap-center md:h-auto md:w-auto md:col-span-3 lg:col-span-2">
           <PhotoCard
             src="/images/venue-rigs-row.jpg"
             alt="A row of identical rigid aluminium cockpits"
@@ -144,9 +192,9 @@ export default function Hardware() {
             className="h-full"
             sizes="(min-width: 1024px) 33vw, 50vw"
           />
-        </Reveal>
+        </div>
 
-        <Reveal className="h-[400px] w-[80vw] shrink-0 snap-start sm:w-[60vw] md:h-auto md:w-auto md:col-span-3">
+        <div className="h-[420px] w-full shrink-0 snap-center md:h-auto md:w-auto md:col-span-3">
           <PhotoCard
             src="/images/venue-telemetry-screens.jpg"
             alt="Drivers racing on ultrawide displays with live timing overhead"
@@ -156,9 +204,9 @@ export default function Hardware() {
             className="h-full"
             sizes="(min-width: 768px) 50vw, 100vw"
           />
-        </Reveal>
+        </div>
 
-        <Reveal delay={0.08} className="h-[400px] w-[80vw] shrink-0 snap-start sm:w-[60vw] md:h-auto md:w-auto md:col-span-3">
+        <div className="h-[420px] w-full shrink-0 snap-center md:h-auto md:w-auto md:col-span-3">
           <PhotoCard
             src="/images/race-cockpit.jpg"
             alt="Inside a stripped-out race car cockpit"
@@ -169,8 +217,39 @@ export default function Hardware() {
             className="h-full"
             sizes="(min-width: 768px) 50vw, 100vw"
           />
-        </Reveal>
+        </div>
       </div>
+
+      <div className="mt-4 flex items-center justify-between md:hidden">
+        <span className="font-mono text-[13px] text-smoke">
+          {String(index + 1).padStart(2, "0")} / {String(SLIDES).padStart(2, "0")}
+        </span>
+        <div className="flex">
+          <button
+            type="button"
+            aria-label="Previous"
+            onClick={() => {
+              hold();
+              go(index - 1);
+            }}
+            className="grid size-11 place-items-center text-bone transition-opacity active:opacity-60"
+          >
+            <ArrowLeft size={22} weight="bold" />
+          </button>
+          <button
+            type="button"
+            aria-label="Next"
+            onClick={() => {
+              hold();
+              go(index + 1);
+            }}
+            className="grid size-11 place-items-center text-bone transition-opacity active:opacity-60"
+          >
+            <ArrowRight size={22} weight="bold" />
+          </button>
+        </div>
+      </div>
+      </Reveal>
     </section>
   );
 }
