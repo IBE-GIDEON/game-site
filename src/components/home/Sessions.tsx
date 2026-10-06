@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import clsx from "clsx";
-import { ArrowRight, Clock, SteeringWheel, Vibrate } from "@phosphor-icons/react";
+import { Clock, SteeringWheel, Vibrate } from "@phosphor-icons/react";
 import { Eyebrow, MaskHeading, Reveal } from "@/components/ui/Reveal";
 import { sessions } from "@/lib/site";
 
@@ -43,7 +43,6 @@ export default function Sessions() {
                 </span>
               </span>
               <span className="font-display text-[1.6rem] text-white">£{s.price}</span>
-              <ArrowRight size={16} className="text-ash" />
             </Link>
           </li>
         ))}
@@ -83,7 +82,6 @@ export default function Sessions() {
                 <p className="mt-4 flex-1 text-[14px] leading-relaxed text-smoke">{s.blurb}</p>
                 <span className="font-label mt-8 flex items-center justify-between border-t border-white/[0.08] pt-5 text-[12px] text-bone">
                   Book this session
-                  <ArrowRight size={16} className="text-smoke transition-all duration-300 group-hover:translate-x-1 group-hover:text-white" />
                 </span>
               </Link>
             </div>
@@ -99,7 +97,6 @@ export default function Sessions() {
           </p>
           <Link href="/events" className="font-label group flex items-center gap-2 text-[12px] text-bone">
             See event packages
-            <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
       </Reveal>

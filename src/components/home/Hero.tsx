@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { BookLabel } from "@/components/ui/Tyre";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Timer, Trophy } from "@phosphor-icons/react";
 import { MaskHeading } from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
@@ -18,8 +18,21 @@ const ease = [0.16, 1, 0.3, 1] as const;
  * play button is hidden (see .hero-video in globals.css), the poster frame shows,
  * and the reel starts on the visitor's first touch anywhere on the page.
  */
+/** Every browser on iPhone/iPad, plus Safari on Mac, runs WebKit. */
+function isWebKit() {
+  const ua = navigator.userAgent;
+  return (
+    /iP(hone|ad|od)/.test(ua) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) ||
+    (/Safari/.test(ua) && !/Chrome|Chromium|CriOS|Edg|OPR|Android/.test(ua))
+  );
+}
+
 function HeroVideo({ ready }: { ready: boolean }) {
   const ref = useRef<HTMLVideoElement>(null);
+  // Low Power Mode and some in-app browsers refuse <video> autoplay outright.
+  // WebKit still animates an MP4 placed in an <img> like a GIF, so we swap to that.
+  const [imgSrc, setImgSrc] = useState<string | null>(null);
 
   useEffect(() => {
     const v = ref.current;
@@ -32,8 +45,16 @@ function HeroVideo({ ready }: { ready: boolean }) {
     v.setAttribute("webkit-playsinline", "");
 
     let visible = true;
+    const fallBack = () => {
+      if (!isWebKit()) return;
+      const file = window.matchMedia("(max-width: 767px)").matches ? "/video/hero-mobile.mp4" : "/video/hero.mp4";
+      setImgSrc(file);
+    };
     const tryPlay = () => {
-      if (visible) v.play().catch(() => {});
+      if (!visible) return;
+      v.play().catch((err: DOMException) => {
+        if (err?.name === "NotAllowedError") fallBack();
+      });
     };
     const io = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
@@ -56,7 +77,12 @@ function HeroVideo({ ready }: { ready: boolean }) {
     document.addEventListener("visibilitychange", onVisible);
 
     tryPlay();
+    // some WebKit builds neither play nor reject; if still paused shortly after, fall back
+    const check = window.setTimeout(() => {
+      if (v.paused && visible) fallBack();
+    }, 2500);
     return () => {
+      window.clearTimeout(check);
       io.disconnect();
       removeGesture();
       document.removeEventListener("visibilitychange", onVisible);
@@ -71,6 +97,7 @@ function HeroVideo({ ready }: { ready: boolean }) {
   }, [ready]);
 
   return (
+    <>
     <video
       ref={ref}
       className="hero-video absolute inset-0 h-full w-full object-cover object-[50%_40%]"
@@ -88,6 +115,17 @@ function HeroVideo({ ready }: { ready: boolean }) {
       <source src="/video/hero-mobile.mp4" type="video/mp4" media="(max-width: 767px)" />
       <source src="/video/hero.mp4" type="video/mp4" />
     </video>
+    {imgSrc && (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={imgSrc}
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[50%_40%]"
+        onError={() => setImgSrc(null)}
+      />
+    )}
+    </>
   );
 }
 
