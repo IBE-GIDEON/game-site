@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Saira } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Loader from "@/components/Loader";
 import Nav from "@/components/Nav";
@@ -10,12 +10,16 @@ import FooterGate from "@/components/FooterGate";
 
 // One family for the whole site, matching the logo wordmark: Saira's bold italic
 // (widened) for display type, upright Saira for reading and data.
-const saira = Saira({
-  subsets: ["latin"],
-  axes: ["wdth"],
-  style: ["normal", "italic"],
+// Self-hosted and cut down to the axis ranges and characters the site uses
+// (wght/wdth instanced, Latin only): 65KB for both files instead of 209KB.
+const saira = localFont({
+  src: [
+    { path: "../fonts/saira-upright.woff2", weight: "400 700", style: "normal" },
+    { path: "../fonts/saira-italic.woff2", weight: "600 750", style: "italic" },
+  ],
   variable: "--font-saira",
   display: "swap",
+  adjustFontFallback: "Arial",
 });
 
 export const metadata: Metadata = {

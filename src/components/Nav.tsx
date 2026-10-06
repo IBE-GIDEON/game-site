@@ -57,7 +57,7 @@ export default function Nav() {
         >
           <nav className="container-x flex h-16 items-center justify-between sm:h-[72px]" aria-label="Main">
             <Link href="/" className="relative z-10 shrink-0" aria-label={`${site.name} home`}>
-              <Image src="/brand/logo-lockup.webp" alt={site.name} width={1094} height={300} preload unoptimized className="h-9 w-auto sm:h-10" />
+              <Image src="/brand/logo-lockup-nav.webp" alt={site.name} width={400} height={110} preload unoptimized className="h-9 w-auto sm:h-10" />
             </Link>
 
             <ul className="hidden h-full items-center gap-8 lg:flex">
@@ -88,19 +88,19 @@ export default function Nav() {
 
             <div className="flex items-center gap-3">
               <div className="hidden sm:block">
-                <Button href="/book" size="md">
+                <Button href="/book" size="md" icon={false}>
                   Book a session
                 </Button>
               </div>
               <button
                 type="button"
                 onClick={() => setOpen((v) => !v)}
-                className="relative z-10 grid size-11 place-items-center rounded-[2px] border border-white/15 text-bone transition-colors hover:border-white/40 lg:hidden"
+                className="relative z-10 -mr-2 grid size-11 place-items-center text-bone transition-opacity hover:opacity-70 lg:hidden"
                 aria-expanded={open}
                 aria-controls="mobile-menu"
                 aria-label={open ? "Close menu" : "Open menu"}
               >
-                {open ? <X size={20} /> : <List size={20} />}
+                {open ? <X size={24} weight="bold" /> : <List size={24} weight="bold" />}
               </button>
             </div>
           </nav>
@@ -147,7 +147,7 @@ export default function Nav() {
                 transition={{ delay: 0.25, duration: 0.45 }}
                 className="mt-auto space-y-3 pt-10"
               >
-                <Button href="/book" size="lg" className="w-full">
+                <Button href="/book" size="lg" className="w-full" icon={false}>
                   Book a session
                 </Button>
                 <div className="grid grid-cols-3 pt-2">

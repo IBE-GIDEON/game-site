@@ -42,7 +42,7 @@ export default function Loader() {
 
           <div className="relative flex flex-col items-center">
             <div className="rc-logo w-[min(64vw,260px)]">
-              <Image src="/brand/logo-stacked.webp" alt="" width={1263} height={845} preload unoptimized className="h-auto w-full" />
+              <Image src="/brand/logo-stacked-loader.webp" alt="" width={520} height={348} preload unoptimized className="h-auto w-full" />
             </div>
 
             {/* Five-light start gantry: lights come on one by one, then lights out */}

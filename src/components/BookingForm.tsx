@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
 import { ArrowRight, CaretLeft, CaretRight, Minus, Plus } from "@phosphor-icons/react";
 import { hours, raceNight, sessions, site } from "@/lib/site";
+import Tyre from "@/components/ui/Tyre";
 
 type Experience = { id: string; name: string; minutes: number; price: number; rigs: number; kind: string; fridayOnly?: boolean };
 
@@ -127,7 +128,13 @@ export default function BookingForm() {
 
   return (
     <div className="mx-auto w-full max-w-[540px]">
-      <h1 className="font-display text-[clamp(1.9rem,3.2vw,2.7rem)] text-white">Book a session</h1>
+      <h1 className="font-display text-[clamp(1.9rem,3.2vw,2.7rem)] text-white">
+        <span className="sr-only">Book a session</span>
+        <span aria-hidden>
+          B<Tyre />
+          <Tyre delay={0.08} />K a session
+        </span>
+      </h1>
       <p className="mt-1.5 text-[14px] text-smoke">Pick a session, a day and a time. We&apos;ll set the rig up for you.</p>
 
       {/* session */}

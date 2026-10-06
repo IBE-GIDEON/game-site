@@ -10,7 +10,7 @@ export default function Footer() {
     <footer className="relative overflow-hidden border-t border-white/[0.07] bg-ink">
       <div className="container-x grid gap-14 py-20 md:grid-cols-12 md:gap-8 md:py-24">
         <div className="md:col-span-5">
-          <Image src="/brand/logo-stacked-mono.webp" alt={site.name} width={1263} height={845} unoptimized className="h-24 w-auto" />
+          <Image src="/brand/logo-stacked-mono-sm.webp" alt={site.name} width={320} height={214} unoptimized className="h-24 w-auto" />
           <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-smoke">
             A premium racing simulator venue in the centre of Peterborough. Professional rigs, real circuits, proper
             competition.

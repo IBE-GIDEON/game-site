@@ -25,7 +25,7 @@ export default function CtaBand({
           <Reveal delay={0.15}>
             <p className="mt-6 max-w-lg text-[16px] leading-relaxed text-smoke sm:text-[18px]">{body}</p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <Button href="/book" size="lg">
+              <Button href="/book" size="lg" icon={false}>
                 Book a session
               </Button>
               <Button href={site.phoneHref} variant="outline" size="lg">

@@ -34,7 +34,7 @@ export default function MobileBookBar() {
               <div className="font-label text-[12px] text-white">Sessions from £15</div>
               <OpenStatus className="mt-0.5 text-[11px]" />
             </div>
-            <Button href="/book" size="md" className="shrink-0">
+            <Button href="/book" size="md" className="shrink-0" icon={false}>
               Book
             </Button>
           </div>
