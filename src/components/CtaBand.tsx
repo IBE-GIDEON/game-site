@@ -1,6 +1,7 @@
 import ParallaxImage from "@/components/ui/ParallaxImage";
 import { MaskHeading, Reveal } from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
+import { PhoneIcon } from "@/components/ui/BrandIcons";
 import { site } from "@/lib/site";
 
 export default function CtaBand({
@@ -28,8 +29,11 @@ export default function CtaBand({
               <Button href="/book" size="lg" icon={false}>
                 Book a session
               </Button>
-              <Button href={site.phoneHref} variant="outline" size="lg">
-                Call {site.phone}
+              <Button href={site.phoneHref} variant="outline" size="lg" icon={false}>
+                <span className="flex items-center gap-2.5">
+                  <PhoneIcon size={20} />
+                  {site.phone}
+                </span>
               </Button>
             </div>
           </Reveal>
