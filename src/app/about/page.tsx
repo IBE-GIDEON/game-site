@@ -37,7 +37,6 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="The venue"
         title={["Created for people who", <span key="2" className="text-white/50">care how driving feels</span>]}
         intro="A premium racing simulation centre in Peterborough, built from the ground up to give you an authentic professional-grade sim racing experience without compromise."
         image="/images/venue-floor-wide.jpg"

@@ -14,7 +14,7 @@ export default function PageHero({
   imageAlt = "",
   children,
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: ReactNode[];
   intro?: string;
   image?: string;
@@ -55,9 +55,11 @@ export default function PageHero({
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/[0.06]" />
       )}
       <div className="container-x relative">
-        <motion.div initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : undefined} transition={{ duration: 0.8 }}>
-          <Eyebrow className="mb-7">{eyebrow}</Eyebrow>
-        </motion.div>
+        {eyebrow && (
+          <motion.div initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : undefined} transition={{ duration: 0.8 }}>
+            <Eyebrow className="mb-7">{eyebrow}</Eyebrow>
+          </motion.div>
+        )}
         <MaskHeading as="h1" play={ready} lines={title} className="max-w-5xl text-[clamp(2.34rem,5.88vw,5.25rem)] text-white" />
         {intro && (
           <motion.p
