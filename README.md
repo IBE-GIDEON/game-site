@@ -42,3 +42,15 @@ All copy, prices, hours, FAQs and reviews live in `src/lib/site.ts`. Venue photo
 The hero video (`public/video/`) is a 20s muted loop cut from the client's promo reel: venue footage only,
 watermark cropped, ~5MB desktop / ~2MB mobile. Logos are in `public/brand/` (stacked, stacked mono,
 and a horizontal lockup built from the stacked artwork for the nav).
+
+## Maintenance mode
+
+Maintenance mode is **on**. In production every page returns a 503 "Under maintenance" screen
+(`src/proxy.ts`). Local development (`npm run dev`) is not affected.
+
+| Setting (host environment variable) | Effect |
+| --- | --- |
+| `MAINTENANCE_MODE=false` | Turn maintenance off and show the site to everyone |
+| `MAINTENANCE_BYPASS_KEY=<secret>` | Owner preview: open any page once with `?preview=<secret>`; that browser sees the real site for 30 days |
+
+To change the default without environment variables, edit `MAINTENANCE_DEFAULT` in `src/proxy.ts`.
