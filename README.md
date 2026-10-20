@@ -45,11 +45,12 @@ and a horizontal lockup built from the stacked artwork for the nav).
 
 ## Maintenance mode
 
-Maintenance mode is **on**. In production every page returns a 503 "Under maintenance" screen
-(`src/proxy.ts`). Local development (`npm run dev`) is not affected.
+Maintenance mode is **off**: the site is public. When switched on, every page in production returns a
+503 "Under maintenance" screen (`src/proxy.ts`). Local development (`npm run dev`) is never affected.
 
 | Setting (host environment variable) | Effect |
 | --- | --- |
+| `MAINTENANCE_MODE=true` | Turn maintenance on (show the Under maintenance screen) |
 | `MAINTENANCE_MODE=false` | Turn maintenance off and show the site to everyone |
 | `MAINTENANCE_BYPASS_KEY=<secret>` | Owner preview: open any page once with `?preview=<secret>`; that browser sees the real site for 30 days |
 

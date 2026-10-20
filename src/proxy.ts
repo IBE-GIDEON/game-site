@@ -10,7 +10,7 @@ import { NextResponse, type NextRequest } from "next/server";
  * Owner preview: set MAINTENANCE_BYPASS_KEY on the host, then open any page once with
  * ?preview=<key>. A cookie keeps the real site visible in that browser for 30 days.
  */
-const MAINTENANCE_DEFAULT = true;
+const MAINTENANCE_DEFAULT = false;
 
 const ON =
   process.env.NODE_ENV === "production" &&
